@@ -13,17 +13,21 @@
 </head>
 <body class="text-center">
 
+
 <main class="form-signin">
-    <form>
+
+    <form th:action="@{/login}" method="post">
         <img class="mb-4"
              src="https://www.manchester.ac.uk/medialibrary/assets/corporate/images/design/logo-university-of-manchester.png"
              alt="UoM Student System">
         <h1 class="h3 mb-3 fw-normal">Uom Student System</h1>
 
         <div class="form-floating">
-            <input type="id" class="form-control" id="floatingInput" placeholder="123456">
+            <input type="text" class="form-control" id="floatingInput" name="id" placeholder="123456">
             <label for="floatingInput">User ID</label>
         </div>
+
+        <span th:text="${error}"></span>
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>

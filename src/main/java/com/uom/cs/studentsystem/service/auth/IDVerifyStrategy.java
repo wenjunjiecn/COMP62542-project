@@ -17,7 +17,7 @@ public class IDVerifyStrategy implements VerifyStrategy {
     @Override
     public boolean verify(VerifyData data) {
         String id = (String) data.getByKey("id");
-        boolean hasUser = userRepository.existsById("id");
+        boolean hasUser = userRepository.existsById(id);
         if (hasUser) {
             return true;
         }

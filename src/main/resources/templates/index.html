@@ -2,19 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Spring Boot Thymeleaf - Bootstrap Static Files</title>
+    <title>Uom Student System</title>
 
     <link th:rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css} "/>
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
+<div th:replace="header::header-body"></div>
 
-        </div>
+<main class="container" style="margin-top: 30px">
+    <div class="bg-light p-5 rounded">
+        <h1>Welcome! <span th:text="${name}"></span></h1>
+        <p class="lead">Your Student ID: <span th:text="${id}"></span></p>
+        <p class="lead">Your Register State: <span th:text="${state}"></span></p>
     </div>
-</div>
+</main>
+
+
 
 <script th:src="@{/assets/jquery/jquery.min.js}"></script>
 <script th:src="@{/assets/popper.js/popper.min.js}"></script>

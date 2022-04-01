@@ -21,14 +21,13 @@ public class AuthService {
     private UserRepository userRepository;
 
     public User login(String id) {
-        User user;
+        User user = null;
         VerifyData verifyData = new VerifyData();
         verifyData.addData("id", id);
         boolean verify = verifyStrategy.verify(verifyData);
         if (verify == true) {
             user = userRepository.getById(id);
-        } else {
-            user = new User();
+            System.out.println(user);
         }
         return user;
     }

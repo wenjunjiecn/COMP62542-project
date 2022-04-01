@@ -21,7 +21,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             throws Exception {
 
         User user = (User) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        System.out.println("user" + user);
+
         //如果session中没有user，表示没登陆
         if (user == null) {
             //这个方法返回false表示忽略当前请求，如果一个用户调用了需要登陆才能使用的接口，如果他没有登陆这里会直接忽略掉
