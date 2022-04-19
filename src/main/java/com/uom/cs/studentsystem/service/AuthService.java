@@ -1,8 +1,8 @@
 package com.uom.cs.studentsystem.service;
 
-import com.uom.cs.studentsystem.model.Student;
+import com.uom.cs.studentsystem.model.StudentEntity;
 import com.uom.cs.studentsystem.model.VerifyData;
-import com.uom.cs.studentsystem.repository.StudentRepository;
+import com.uom.cs.studentsystem.repository.StudentEntityRepository;
 import com.uom.cs.studentsystem.service.auth.VerifyStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,17 +18,17 @@ public class AuthService {
     @Autowired
     private VerifyStrategy verifyStrategy;
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentEntityRepository studentEntityRepository;
 
-    public Student login(String id) {
-        Student student = null;
+    public StudentEntity login(String id) {
+        StudentEntity studentEntity = null;
         VerifyData verifyData = new VerifyData();
         verifyData.addData("id", id);
         boolean verify = verifyStrategy.verify(verifyData);
         if (verify == true) {
-            student = studentRepository.getById(id);
-            System.out.println(student);
+            studentEntity = studentEntityRepository.getById(id);
+            System.out.println(studentEntity);
         }
-        return student;
+        return studentEntity;
     }
 }

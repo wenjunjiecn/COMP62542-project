@@ -1,6 +1,6 @@
 package com.uom.cs.studentsystem.controller;
 
-import com.uom.cs.studentsystem.model.Student;
+import com.uom.cs.studentsystem.model.StudentEntity;
 import com.uom.cs.studentsystem.service.AuthService;
 import com.uom.cs.studentsystem.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +22,6 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @RequestMapping("/")
-    public String getHomePage(Model model, HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        if (student != null) {
-            model.addAttribute("id", student.getId());
-            model.addAttribute("name", student.getName());
-            model.addAttribute("state", student.getState());
-        }
-        return "index";
-    }
 
     @GetMapping("/login")
     public String getLoginPage(Model model) {
@@ -43,12 +33,12 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@RequestParam(value = "id") String id, Model model, HttpServletRequest request) {
-        Student student = authService.login(id);
-        if (student == null) {
+        StudentEntity studentEntity = authService.login(id);
+        if (studentEntity == null) {
             model.addAttribute("error", "The id does not exist");
             return "login";
         }
-        request.getSession().setAttribute(ConstantUtils.USER_SESSION_KEY, student);
+        request.getSession().setAttribute(ConstantUtils.USER_SESSION_KEY, studentEntity);
         return "redirect:/";
     }
 
