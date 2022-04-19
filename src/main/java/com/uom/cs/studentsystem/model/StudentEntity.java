@@ -1,5 +1,7 @@
 package com.uom.cs.studentsystem.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
