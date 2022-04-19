@@ -1,7 +1,7 @@
 package com.uom.cs.studentsystem.service.auth;
 
 import com.uom.cs.studentsystem.model.VerifyData;
-import com.uom.cs.studentsystem.repository.UserRepository;
+import com.uom.cs.studentsystem.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class IDVerifyStrategy implements VerifyStrategy {
     @Autowired
-    private UserRepository userRepository;
+    private StudentRepository studentRepository;
 
     @Override
     public boolean verify(VerifyData data) {
         String id = (String) data.getByKey("id");
-        boolean hasUser = userRepository.existsById(id);
+        boolean hasUser = studentRepository.existsById(id);
         if (hasUser) {
             return true;
         }

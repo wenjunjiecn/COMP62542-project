@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @version 1.0
  */
 @Entity
-public class User implements Serializable {
+public class Student implements Serializable {
     private static final long serialVersionUID = 6687929992161255473L;
     @Id
     @Column(name = "id", nullable = false)
@@ -29,7 +29,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public User() {
+    public Student() {
     }
 
     public String getName() {
