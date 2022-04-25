@@ -1,6 +1,6 @@
 package com.uom.cs.studentsystem.service;
 
-import com.uom.cs.studentsystem.bo.Student;
+import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.model.StudentEntity;
 import com.uom.cs.studentsystem.repository.StudentEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;

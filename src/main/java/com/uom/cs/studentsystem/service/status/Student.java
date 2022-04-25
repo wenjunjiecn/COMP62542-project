@@ -1,8 +1,6 @@
-package com.uom.cs.studentsystem.bo;
+package com.uom.cs.studentsystem.service.status;
 
 import com.uom.cs.studentsystem.model.StudentEntity;
-import com.uom.cs.studentsystem.service.status.IRegisterStatus;
-import com.uom.cs.studentsystem.service.status.RegisterStatusFactory;
 
 /**
  * @author wenjunjie
@@ -18,16 +16,17 @@ public class Student {
      * Generate StudentBo object from Student object
      */
     public Student(StudentEntity studentEntity) {
-        this.id= studentEntity.getId();
-        this.name= studentEntity.getName();
-        this.registerStatus= RegisterStatusFactory.getRegisterStatus(studentEntity.getState());
+        this.id = studentEntity.getId();
+        this.name = studentEntity.getName();
+        this.registerStatus = RegisterStatusFactory.getRegisterStatus(studentEntity.getState());
     }
 
     /**
      * Check StudentRegisterStatus
+     *
      * @return String
      */
-    public String checkRegisterStatus(){
+    public String checkRegisterStatus() {
         return registerStatus.checkStatus();
     }
 }
