@@ -48,4 +48,8 @@ public class AdditionActivity implements IActivity{
         entity.setStudentid(studentid);
         return entity;
     }
+
+    public String getStudentid() {
+        return studentid;
+    }
 }

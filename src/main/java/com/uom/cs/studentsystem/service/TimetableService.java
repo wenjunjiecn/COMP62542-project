@@ -2,6 +2,7 @@ package com.uom.cs.studentsystem.service;
 
 import com.uom.cs.studentsystem.model.AdditionalActivityEntity;
 import com.uom.cs.studentsystem.repository.AdditionalActivityEntityRepository;
+import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.service.timetable.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -39,8 +40,25 @@ public class TimetableService {
         additionalActivityEntityRepository.saveAndFlush(entity);
     }
 
-    public void removeAdditionalActivity(String id){
-        additionalActivityEntityRepository.deleteById(id);
+    public boolean removeAdditionalActivity(Student student,String messageId){
+        if(isMessageMatchStudent(student,messageId)){
+            additionalActivityEntityRepository.deleteById(messageId);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     *Check if the message belongs to the current user
+     *to avoid illegal deletion of messages that do not belong to the user
+     */
+    private boolean isMessageMatchStudent(Student student, String messageId){
+        String stuId = student.getId();
+        AdditionalActivityEntity entity = additionalActivityEntityRepository.getById(messageId);
+        if(stuId.equals(entity.getStudentid())){
+            return true;
+        }
+        return false;
     }
 
 }
