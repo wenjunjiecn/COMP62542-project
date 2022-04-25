@@ -34,6 +34,13 @@ public class TimetableService {
         }
         return basicTimetable.getActivityDetails();
     }
+    public void addAdditionalActivity(AdditionActivity activity){
+        AdditionalActivityEntity entity= activity.convertToEntity();
+        additionalActivityEntityRepository.saveAndFlush(entity);
+    }
 
+    public void removeAdditionalActivity(String id){
+        additionalActivityEntityRepository.deleteById(id);
+    }
 
 }
