@@ -18,6 +18,7 @@ public class AdditionActivity implements IActivity{
     private Integer dayInWeek;
     private String message;
     private String type="additional";
+    private String studentid;
     @Override
     public List<TimetableItem> getActivityDetails() {
         LinkedList<TimetableItem> activity=new LinkedList<>();
@@ -34,5 +35,17 @@ public class AdditionActivity implements IActivity{
         this.endTime=entity.getEndTime();
         this.message=entity.getMessage();
         this.dayInWeek=entity.getDayInWeek();
+        this.studentid= entity.getStudentid();
+    }
+
+    public AdditionalActivityEntity convertToEntity(){
+        AdditionalActivityEntity entity= new AdditionalActivityEntity();
+        entity.setId(id);
+        entity.setStartTime(startTime);
+        entity.setEndTime(endTime);
+        entity.setMessage(message);
+        entity.setDayInWeek(dayInWeek);
+        entity.setStudentid(studentid);
+        return entity;
     }
 }
