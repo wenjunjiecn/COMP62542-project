@@ -2,15 +2,18 @@ package com.uom.cs.studentsystem.service.status;
 
 import com.uom.cs.studentsystem.model.StudentEntity;
 
+import java.io.Serializable;
+
 /**
  * @author wenjunjie
  * @version 1.0
  * Student Business Object used in Services level
  */
-public class Student {
+public class Student implements Serializable {
     private String id;
     private String name;
     private IRegisterStatus registerStatus;
+    private static final long serialVersionUID = 6687929992161255473L;
 
     /**
      * Generate StudentBo object from Student object
@@ -28,5 +31,13 @@ public class Student {
      */
     public String checkRegisterStatus() {
         return registerStatus.checkStatus();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }

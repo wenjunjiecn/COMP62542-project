@@ -1,7 +1,7 @@
 package com.uom.cs.studentsystem.controller;
 
-import com.uom.cs.studentsystem.model.StudentEntity;
 import com.uom.cs.studentsystem.service.StudentService;
+import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,11 +27,11 @@ public class StudentDetailController {
      */
     @RequestMapping("/")
     public String getHomePage(Model model, HttpServletRequest request) {
-        StudentEntity studentEntity = (StudentEntity) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        if (studentEntity != null) {
-            model.addAttribute("id", studentEntity.getId());
-            model.addAttribute("name", studentEntity.getName());
-            model.addAttribute("state", studentService.getRegisterStatus(studentEntity.getId()));
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        if (student != null) {
+            model.addAttribute("id", student.getId());
+            model.addAttribute("name", student.getName());
+            model.addAttribute("state", studentService.getRegisterStatus(student.getId()));
         }
         return "index";
     }

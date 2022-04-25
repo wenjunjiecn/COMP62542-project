@@ -2,12 +2,16 @@ package com.uom.cs.studentsystem.controller;
 
 import com.uom.cs.studentsystem.model.StudentEntity;
 import com.uom.cs.studentsystem.service.TimetableService;
+import com.uom.cs.studentsystem.service.status.Student;
+import com.uom.cs.studentsystem.service.timetable.AdditionActivity;
 import com.uom.cs.studentsystem.service.timetable.IActivity;
 import com.uom.cs.studentsystem.service.timetable.TimetableItem;
 import com.uom.cs.studentsystem.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +27,9 @@ public class StudentTimetableController {
     TimetableService timetableService;
     @RequestMapping("/timetable")
     public String getTimetablePage(Model model, HttpServletRequest request) {
-        StudentEntity studentEntity = (StudentEntity) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        if (studentEntity != null) {
-            String id = studentEntity.getId();
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        if (student != null) {
+            String id = student.getId();
             List<TimetableItem> basicTimetableDetails = timetableService.getBasicTimetableDetailsOrderByTime(id);
             System.out.println("this is basictimetabledetails"+basicTimetableDetails);
             Map<Integer,List<TimetableItem>> timetableMapByDayInWeek=new HashMap<>();
@@ -50,5 +54,13 @@ public class StudentTimetableController {
 //            System.out.println(timetableMapByDayInWeek);
         }
         return "timetable";
+    }
+
+    @PostMapping("/timetable/add")
+    public String addAdditionalActivity(@RequestBody AdditionActivity activity,HttpServletRequest request){
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+
+        timetableService.addAdditionalActivity(activity);
+        return "redirect:/timetable";
     }
 }

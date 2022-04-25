@@ -1,6 +1,6 @@
 package com.uom.cs.studentsystem.interceptor;
 
-import com.uom.cs.studentsystem.model.StudentEntity;
+import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.utils.ConstantUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -20,10 +20,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
 
-        StudentEntity studentEntity = (StudentEntity) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
 
         //如果session中没有user，表示没登陆
-        if (studentEntity == null) {
+        if (student == null) {
             //这个方法返回false表示忽略当前请求，如果一个用户调用了需要登陆才能使用的接口，如果他没有登陆这里会直接忽略掉
             //当然你可以利用response给用户返回一些提示信息，告诉他没登陆
             response.sendRedirect(request.getContextPath() + "/login");

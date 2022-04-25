@@ -4,6 +4,7 @@ import com.uom.cs.studentsystem.model.StudentEntity;
 import com.uom.cs.studentsystem.model.VerifyData;
 import com.uom.cs.studentsystem.repository.StudentEntityRepository;
 import com.uom.cs.studentsystem.service.auth.VerifyStrategy;
+import com.uom.cs.studentsystem.service.status.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,15 +21,17 @@ public class AuthService {
     @Autowired
     private StudentEntityRepository studentEntityRepository;
 
-    public StudentEntity login(String id) {
+    public Student login(String id) {
         StudentEntity studentEntity = null;
+        Student student=null;
         VerifyData verifyData = new VerifyData();
         verifyData.addData("id", id);
         boolean verify = verifyStrategy.verify(verifyData);
         if (verify == true) {
             studentEntity = studentEntityRepository.getById(id);
+            student= new Student(studentEntity);
             System.out.println(studentEntity);
         }
-        return studentEntity;
+        return student;
     }
 }

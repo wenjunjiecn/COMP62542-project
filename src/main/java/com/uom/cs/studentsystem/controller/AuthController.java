@@ -2,6 +2,7 @@ package com.uom.cs.studentsystem.controller;
 
 import com.uom.cs.studentsystem.model.StudentEntity;
 import com.uom.cs.studentsystem.service.AuthService;
+import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,20 +26,18 @@ public class AuthController {
 
     @GetMapping("/login")
     public String getLoginPage(Model model) {
-//        List<Product> listProducts = authService.listAll();
-//        model.addAttribute("listProducts", listProducts);
 
         return "login";
     }
 
     @PostMapping("/login")
     public String login(@RequestParam(value = "id") String id, Model model, HttpServletRequest request) {
-        StudentEntity studentEntity = authService.login(id);
-        if (studentEntity == null) {
+        Student student = authService.login(id);
+        if (student == null) {
             model.addAttribute("error", "The id does not exist");
             return "login";
         }
-        request.getSession().setAttribute(ConstantUtils.USER_SESSION_KEY, studentEntity);
+        request.getSession().setAttribute(ConstantUtils.USER_SESSION_KEY, student);
         return "redirect:/";
     }
 
