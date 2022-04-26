@@ -32,22 +32,30 @@ public class TimetableService {
     public List<TimetableItem> getBasicTimetableDetailsOrderByTime(String id){
         List<IActivity> list= new LinkedList<>();
         BasicTimetable basicTimetable = new BasicTimetable();
+
         List<AdditionalActivityEntity> additionActivities = additionalActivityEntityRepository.findByStudentid(id);
         List<CourseSelectionEntity> courseActivities = courseSelectionEntityRepository.findByStudentid(id);
+
         for (AdditionalActivityEntity activity : additionActivities) {
             AdditionActivity i = new AdditionActivity(activity);
             basicTimetable.add(i);
         }
+
         for (CourseSelectionEntity courseActivity : courseActivities) {
             CourseEntity courseEntity = courseEntityRepository.findById(courseActivity.getCourseid()).get();
             CourseSelection i = new CourseSelection(courseActivity,courseEntity);
             basicTimetable.add(i);
         }
+
         Iterator iterator = basicTimetable.createIterator();
+        List<TimetableItem> orderedList= new LinkedList<>();
+
         while (iterator.hasNext()) {
             TimetableItem next = iterator.next();
+            orderedList.add(next);
         }
-        return basicTimetable.getActivityDetails();
+
+        return orderedList;
     }
     public void addAdditionalActivity(AdditionActivity activity){
         AdditionalActivityEntity entity= activity.convertToEntity();
