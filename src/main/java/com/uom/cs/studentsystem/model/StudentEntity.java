@@ -1,7 +1,5 @@
 package com.uom.cs.studentsystem.model;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,15 +21,15 @@ public class StudentEntity implements Serializable {
     private String state;
 
 
+    public StudentEntity() {
+    }
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public StudentEntity() {
     }
 
     public String getName() {

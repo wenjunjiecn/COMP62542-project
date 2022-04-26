@@ -7,5 +7,6 @@ package com.uom.cs.studentsystem.service.timetable;
 public interface Iterator {
 
     boolean hasNext();
+
     TimetableItem next();
 }

@@ -10,10 +10,10 @@ import java.io.Serializable;
  * Student Business Object used in Services level
  */
 public class Student implements Serializable {
+    private static final long serialVersionUID = 6687929992161255473L;
     private String id;
     private String name;
     private IRegisterStatus registerStatus;
-    private static final long serialVersionUID = 6687929992161255473L;
 
     /**
      * Generate StudentBo object from Student object
@@ -41,7 +41,7 @@ public class Student implements Serializable {
         return name;
     }
 
-    public Boolean hasTimeTablePermission(){
+    public Boolean hasTimeTablePermission() {
         return registerStatus.hasTimetablePermission();
     }
 }

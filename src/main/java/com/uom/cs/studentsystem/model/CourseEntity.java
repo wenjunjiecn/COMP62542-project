@@ -1,10 +1,7 @@
 package com.uom.cs.studentsystem.model;
 
-import com.uom.cs.studentsystem.service.status.Student;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author wenjunjie
@@ -12,6 +9,7 @@ import java.util.List;
  */
 @Entity
 public class CourseEntity implements Serializable {
+    private static final long serialVersionUID = 6687929992161255473L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -26,8 +24,6 @@ public class CourseEntity implements Serializable {
     private String endTime;
     @Column(nullable = false)
     private boolean isOptionalCourse;
-
-    private static final long serialVersionUID = 6687929992161255473L;
 
     public Long getId() {
         return id;

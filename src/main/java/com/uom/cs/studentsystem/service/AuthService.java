@@ -23,13 +23,13 @@ public class AuthService {
 
     public Student login(String id) {
         StudentEntity studentEntity = null;
-        Student student=null;
+        Student student = null;
         VerifyData verifyData = new VerifyData();
         verifyData.addData("id", id);
         boolean verify = verifyStrategy.verify(verifyData);
         if (verify == true) {
             studentEntity = studentEntityRepository.getById(id);
-            student= new Student(studentEntity);
+            student = new Student(studentEntity);
             System.out.println(studentEntity);
         }
         return student;

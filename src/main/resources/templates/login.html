@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <meta content="Mark Otto, Jacob Thornton, and Bootstrap contributors" name="author">
+    <meta content="Hugo 0.88.1" name="generator">
     <title>Spring Boot Thymeleaf - Bootstrap Static Files</title>
 
-    <link th:rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css} "/>
+    <link th:href="@{/assets/bootstrap/css/bootstrap.min.css} " th:rel="stylesheet"/>
     <link th:href="@{/assets/timetable/css/login.css}" th:rel="stylesheet">
 </head>
 <body class="text-center">
@@ -16,14 +16,14 @@
 
 <main class="form-signin">
 
-    <form th:action="@{/login}" method="post">
-        <img class="mb-4"
-             src="https://www.manchester.ac.uk/medialibrary/assets/corporate/images/design/logo-university-of-manchester.png"
-             alt="UoM Student System">
+    <form method="post" th:action="@{/login}">
+        <img alt="UoM Student System"
+             class="mb-4"
+             src="https://www.manchester.ac.uk/medialibrary/assets/corporate/images/design/logo-university-of-manchester.png">
         <h1 class="h3 mb-3 fw-normal">Uom Student System</h1>
 
         <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" name="id" placeholder="123456">
+            <input class="form-control" id="floatingInput" name="id" placeholder="123456" type="text">
             <label for="floatingInput">User ID</label>
         </div>
 

@@ -1,6 +1,5 @@
 package com.uom.cs.studentsystem.controller;
 
-import com.uom.cs.studentsystem.model.StudentEntity;
 import com.uom.cs.studentsystem.service.AuthService;
 import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.utils.ConstantUtils;

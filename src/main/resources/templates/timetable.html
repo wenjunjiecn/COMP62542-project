@@ -1,174 +1,181 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>document.getElementsByTagName("html")[0].className += " js";</script>
-  <link rel="stylesheet" href="../assets/timetable/css/style.css">
-  <title>Timetable</title>
-  <link th:rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css} "/>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <script>document.getElementsByTagName("html")[0].className += " js";</script>
+    <link href="../assets/timetable/css/style.css" rel="stylesheet">
+    <title>Timetable</title>
+    <link th:href="@{/assets/bootstrap/css/bootstrap.min.css} " th:rel="stylesheet"/>
 </head>
 <body>
-  <div th:replace="header::header-body"></div>
-  <div style="padding-bottom: 30px"></div>
-  <header class="cd-main-header text-center flex flex-column flex-center">
+<div th:replace="header::header-body"></div>
+<div style="padding-bottom: 30px"></div>
+<header class="cd-main-header text-center flex flex-column flex-center">
     <h1 class="text-xl">Timetable</h1>
     <button class="btn btn-primary btn-lg" onclick="window.location.href='/timetable/add'">
-      Add Activity
+        Add Activity
     </button>
-  </header>
+</header>
 <!--  Add additional activity button -->
 
 
-
-  <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
+<div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
     <div class="cd-schedule__timeline">
-      <ul>
-        <li><span>09:00</span></li>
-        <li><span>09:30</span></li>
-        <li><span>10:00</span></li>
-        <li><span>10:30</span></li>
-        <li><span>11:00</span></li>
-        <li><span>11:30</span></li>
-        <li><span>12:00</span></li>
-        <li><span>12:30</span></li>
-        <li><span>13:00</span></li>
-        <li><span>13:30</span></li>
-        <li><span>14:00</span></li>
-        <li><span>14:30</span></li>
-        <li><span>15:00</span></li>
-        <li><span>15:30</span></li>
-        <li><span>16:00</span></li>
-        <li><span>16:30</span></li>
-        <li><span>17:00</span></li>
-        <li><span>17:30</span></li>
-        <li><span>18:00</span></li>
-      </ul>
+        <ul>
+            <li><span>09:00</span></li>
+            <li><span>09:30</span></li>
+            <li><span>10:00</span></li>
+            <li><span>10:30</span></li>
+            <li><span>11:00</span></li>
+            <li><span>11:30</span></li>
+            <li><span>12:00</span></li>
+            <li><span>12:30</span></li>
+            <li><span>13:00</span></li>
+            <li><span>13:30</span></li>
+            <li><span>14:00</span></li>
+            <li><span>14:30</span></li>
+            <li><span>15:00</span></li>
+            <li><span>15:30</span></li>
+            <li><span>16:00</span></li>
+            <li><span>16:30</span></li>
+            <li><span>17:00</span></li>
+            <li><span>17:30</span></li>
+            <li><span>18:00</span></li>
+        </ul>
     </div> <!-- .cd-schedule__timeline -->
 
     <div class="cd-schedule__events">
-      <ul>
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>Monday</span></div>
+        <ul>
+            <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span>Monday</span></div>
 
 
-
-          <ul>
-            <li th:each="item : ${Monday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
-                <em class="cd-schedule__name" th:text="${item.message}"></em>
-              </a>
+                <ul>
+                    <li class="cd-schedule__event" th:each="item : ${Monday}">
+                        <a href="#0" th:data-end="${item.endTime}" th:data-event="${item.type}"
+                           th:data-start="${item.startTime}" th:event-id="${#strings.toString(item.id)}" th:event-type="${item.type}">
+                            <em class="cd-schedule__name" th:text="${item.message}"></em>
+                        </a>
+                    </li>
+                </ul>
             </li>
-          </ul>
-        </li>
 
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>Tuesday</span></div>
+            <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span>Tuesday</span></div>
 
-          <ul>
-            <li th:each="item : ${Tuesday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
-                <em class="cd-schedule__name" th:text="${item.message}"></em>
-              </a>
+                <ul>
+                    <li class="cd-schedule__event" th:each="item : ${Tuesday}">
+                        <a href="#0" th:data-end="${item.endTime}" th:data-event="${item.type}"
+                           th:data-start="${item.startTime}" th:event-id="${#strings.toString(item.id)}" th:event-type="${item.type}">
+                            <em class="cd-schedule__name" th:text="${item.message}"></em>
+                        </a>
+                    </li>
+                </ul>
             </li>
-          </ul>
-        </li>
 
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>Wednesday</span></div>
+            <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span>Wednesday</span></div>
 
-          <ul>
-            <li th:each="item : ${Wednesday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
-                <em class="cd-schedule__name" th:text="${item.message}"></em>
-              </a>
+                <ul>
+                    <li class="cd-schedule__event" th:each="item : ${Wednesday}">
+                        <a href="#0" th:data-end="${item.endTime}" th:data-event="${item.type}"
+                           th:data-start="${item.startTime}" th:event-id="${#strings.toString(item.id)}" th:event-type="${item.type}">
+                            <em class="cd-schedule__name" th:text="${item.message}"></em>
+                        </a>
+                    </li>
+                </ul>
             </li>
-          </ul>
-        </li>
 
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>Thursday</span></div>
+            <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span>Thursday</span></div>
 
-          <ul>
-            <li th:each="item : ${Thursday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
-                <em class="cd-schedule__name" th:text="${item.message}"></em>
-              </a>
+                <ul>
+                    <li class="cd-schedule__event" th:each="item : ${Thursday}">
+                        <a href="#0" th:data-end="${item.endTime}" th:data-event="${item.type}"
+                           th:data-start="${item.startTime}" th:event-id="${#strings.toString(item.id)}" th:event-type="${item.type}">
+                            <em class="cd-schedule__name" th:text="${item.message}"></em>
+                        </a>
+                    </li>
+                </ul>
             </li>
-          </ul>
-        </li>
 
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>Friday</span></div>
+            <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span>Friday</span></div>
 
-          <ul>
-            <li th:each="item : ${Friday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
-                <em class="cd-schedule__name" th:text="${item.message}"></em>
-              </a>
+                <ul>
+                    <li class="cd-schedule__event" th:each="item : ${Friday}">
+                        <a href="#0" th:data-end="${item.endTime}" th:data-event="${item.type}"
+                           th:data-start="${item.startTime}" th:event-id="${#strings.toString(item.id)}" th:event-type="${item.type}">
+                            <em class="cd-schedule__name" th:text="${item.message}"></em>
+                        </a>
+                    </li>
+                </ul>
             </li>
-          </ul>
-        </li>
 
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>Saturday</span></div>
+            <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span>Saturday</span></div>
 
-          <ul>
-            <li th:each="item : ${Saturday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
-                <em class="cd-schedule__name" th:text="${item.message}"></em>
-              </a>
+                <ul>
+                    <li class="cd-schedule__event" th:each="item : ${Saturday}">
+                        <a href="#0" th:data-end="${item.endTime}" th:data-event="${item.type}"
+                           th:data-start="${item.startTime}" th:event-id="${#strings.toString(item.id)}" th:event-type="${item.type}">
+                            <em class="cd-schedule__name" th:text="${item.message}"></em>
+                        </a>
+                    </li>
+                </ul>
             </li>
-          </ul>
-        </li>
 
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>Sunday</span></div>
+            <li class="cd-schedule__group">
+                <div class="cd-schedule__top-info"><span>Sunday</span></div>
 
-          <ul>
-            <li th:each="item : ${Sunday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
-                <em class="cd-schedule__name" th:text="${item.message}"></em>
-              </a>
+                <ul>
+                    <li class="cd-schedule__event" th:each="item : ${Sunday}">
+                        <a href="#0" th:data-end="${item.endTime}" th:data-event="${item.type}"
+                           th:data-start="${item.startTime}" th:event-id="${#strings.toString(item.id)}" th:event-type="${item.type}">
+                            <em class="cd-schedule__name" th:text="${item.message}"></em>
+                        </a>
+                    </li>
+                </ul>
             </li>
-          </ul>
-        </li>
-      </ul>
+        </ul>
     </div>
 
     <div class="cd-schedule-modal">
-      <header class="cd-schedule-modal__header">
-        <div class="cd-schedule-modal__content">
-          <span class="cd-schedule-modal__date"></span>
-          <h3 class="cd-schedule-modal__name"></h3>
+        <header class="cd-schedule-modal__header">
+            <div class="cd-schedule-modal__content">
+                <span class="cd-schedule-modal__date"></span>
+                <h3 class="cd-schedule-modal__name"></h3>
+            </div>
+
+            <div class="cd-schedule-modal__header-bg"></div>
+            <form action="#" class="delete_form" method="post">
+                <button class="delete_button btn btn-danger" style="position: absolute;bottom: 5px;right: 5px;z-index:999"
+                        type="submit">Delete Activity
+                </button>
+            </form>
+
+        </header>
+
+        <div class="cd-schedule-modal__body" style="display: none">
+            <div class="cd-schedule-modal__event-info" hidden>
+
+            </div>
+
+            <div class="cd-schedule-modal__body-bg" hidden></div>
         </div>
 
-        <div class="cd-schedule-modal__header-bg"></div>
-        <form class="delete_form" action="#" method="post">
-          <button type="submit" class="delete_button btn btn-danger" style="position: absolute;bottom: 5px;right: 5px;z-index:999">Delete Activity</button>
-        </form>
-
-      </header>
-
-      <div class="cd-schedule-modal__body" style="display: none" >
-        <div class="cd-schedule-modal__event-info" hidden>
-
-        </div>
-
-        <div class="cd-schedule-modal__body-bg" hidden></div>
-      </div>
-
-      <a href="#0" class="cd-schedule-modal__close text-replace" hidden>Close</a>
+        <a class="cd-schedule-modal__close text-replace" hidden href="#0">Close</a>
     </div>
 
     <div class="cd-schedule__cover-layer"></div>
-  </div> <!-- .cd-schedule -->
+</div> <!-- .cd-schedule -->
 
-  <script src="../assets/timetable/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
-  <script src="../assets/timetable/js/main.js"></script>
-  <script th:src="@{/assets/jquery/jquery.min.js}"></script>
-  <script th:src="@{/assets/popper.js/popper.min.js}"></script>
-  <script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+<script src="../assets/timetable/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
+<script src="../assets/timetable/js/main.js"></script>
+<script th:src="@{/assets/jquery/jquery.min.js}"></script>
+<script th:src="@{/assets/popper.js/popper.min.js}"></script>
+<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 </html>

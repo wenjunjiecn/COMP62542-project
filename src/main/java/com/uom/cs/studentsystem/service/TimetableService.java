@@ -9,12 +9,10 @@ import com.uom.cs.studentsystem.repository.CourseSelectionEntityRepository;
 import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.service.timetable.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author wenjunjie
@@ -29,8 +27,8 @@ public class TimetableService {
     @Autowired
     CourseEntityRepository courseEntityRepository;
 
-    public List<TimetableItem> getBasicTimetableDetailsOrderByTime(String id){
-        List<IActivity> list= new LinkedList<>();
+    public List<TimetableItem> getBasicTimetableDetailsOrderByTime(String id) {
+        List<IActivity> list = new LinkedList<>();
         BasicTimetable basicTimetable = new BasicTimetable();
 
         List<AdditionalActivityEntity> additionActivities = additionalActivityEntityRepository.findByStudentid(id);
@@ -43,12 +41,12 @@ public class TimetableService {
 
         for (CourseSelectionEntity courseActivity : courseActivities) {
             CourseEntity courseEntity = courseEntityRepository.findById(courseActivity.getCourseid()).get();
-            CourseSelection i = new CourseSelection(courseActivity,courseEntity);
+            CourseSelection i = new CourseSelection(courseActivity, courseEntity);
             basicTimetable.add(i);
         }
 
         Iterator iterator = basicTimetable.createIterator();
-        List<TimetableItem> orderedList= new LinkedList<>();
+        List<TimetableItem> orderedList = new LinkedList<>();
 
         while (iterator.hasNext()) {
             TimetableItem next = iterator.next();
@@ -57,15 +55,16 @@ public class TimetableService {
 
         return orderedList;
     }
-    public void addAdditionalActivity(AdditionActivity activity){
-        AdditionalActivityEntity entity= activity.convertToEntity();
-        System.out.println("entity==="+entity);
+
+    public void addAdditionalActivity(AdditionActivity activity) {
+        AdditionalActivityEntity entity = activity.convertToEntity();
+        System.out.println("entity===" + entity);
         additionalActivityEntityRepository.saveAndFlush(entity);
     }
 
-    public boolean removeAdditionalActivity(Student student,String messageId){
+    public boolean removeAdditionalActivity(Student student, String messageId) {
         long mid = Long.parseLong(messageId);
-        if(isMessageMatchStudent(student,mid)){
+        if (isMessageMatchStudent(student, mid)) {
             additionalActivityEntityRepository.deleteById(mid);
             return true;
         }
@@ -73,13 +72,13 @@ public class TimetableService {
     }
 
     /**
-     *Check if the message belongs to the current user
-     *to avoid illegal deletion of messages that do not belong to the user
+     * Check if the message belongs to the current user
+     * to avoid illegal deletion of messages that do not belong to the user
      */
-    private boolean isMessageMatchStudent(Student student, Long mid){
+    private boolean isMessageMatchStudent(Student student, Long mid) {
         String stuId = student.getId();
         AdditionalActivityEntity entity = additionalActivityEntityRepository.getById(mid);
-        if(stuId.equals(entity.getStudentid())){
+        if (stuId.equals(entity.getStudentid())) {
             return true;
         }
         return false;

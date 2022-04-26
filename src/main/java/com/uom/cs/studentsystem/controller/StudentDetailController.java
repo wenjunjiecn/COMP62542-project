@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * StudentDetailController is a controller specifically designed
  * to display student information pages
+ *
  * @version 1.0
  */
 @Controller

@@ -59,7 +59,6 @@ public class StudentTimetableController {
     }
 
 
-
     @GetMapping("/timetable/add")
     public String getAddActivityPage(HttpServletRequest request) {
         Student student = getStudent(request);
@@ -84,13 +83,14 @@ public class StudentTimetableController {
 
     /**
      * Delete additional activities for students via message id
+     *
      * @param messageId
      * @param request
      */
     @PostMapping("/timetable/delete/{id}")
     public String deleteAdditionalActivity(@PathVariable(name = "id") String messageId, HttpServletRequest request) {
         Student student = getStudent(request);
-        if(student==null) return "403";
+        if (student == null) return "403";
         boolean isSuccess = timetableService.removeAdditionalActivity(student, messageId);
         if (!isSuccess) {
             return "403";
@@ -102,6 +102,7 @@ public class StudentTimetableController {
      * Get the student object in the session, if there is a student object
      * and the object has permission to access the timetable function then
      * return the object, otherwise return null
+     *
      * @param request
      * @return student
      */

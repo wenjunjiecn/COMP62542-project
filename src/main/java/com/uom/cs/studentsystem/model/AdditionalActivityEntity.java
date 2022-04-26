@@ -9,25 +9,20 @@ import java.io.Serializable;
  */
 @Entity
 public class AdditionalActivityEntity implements Serializable {
+    private static final long serialVersionUID = 6687929992161255473L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(nullable = false)
     private String studentid;
-
     @Column(nullable = false)
     private Integer dayInWeek;
-
-
     @Column(nullable = false)
     private String startTime;
     @Column(nullable = false)
     private String endTime;
     private String message;
-
-
-    private static final long serialVersionUID = 6687929992161255473L;
 
     public Long getId() {
         return id;

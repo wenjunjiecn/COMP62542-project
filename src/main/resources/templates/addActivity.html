@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <title>Uom Student System</title>
 
-    <link th:rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css} "/>
-    <link th:rel="stylesheet" th:href="@{/assets/css/form.css} "/>
+    <link th:href="@{/assets/bootstrap/css/bootstrap.min.css} " th:rel="stylesheet"/>
+    <link th:href="@{/assets/css/form.css} " th:rel="stylesheet"/>
 </head>
 <body>
 
@@ -17,17 +17,17 @@
                 <div class="card-body p-4">
                     <div class="text-center">
                         <div class="h1 fw-light">Add new activity</div>
-                        <p class="mb-4 text-muted">You can fill in some personal activities in your personal timetable.</p>
+                        <p class="mb-4 text-muted">You can fill in some personal activities in your personal
+                            timetable.</p>
                     </div>
 
 
-
-                    <form th:action="@{/timetable/add}" method="post">
-
+                    <form method="post" th:action="@{/timetable/add}">
 
 
                         <div class="form-floating">
-                            <select class="form-select" name="dayInWeek" id="floatingSelect" aria-label="Floating label select example" required>
+                            <select aria-label="Floating label select example" class="form-select" id="floatingSelect"
+                                    name="dayInWeek" required>
                                 <option style='display: none'></option>
                                 <option value="1">Monday</option>
                                 <option value="2">Tuesday</option>
@@ -42,22 +42,24 @@
 
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="startTime" id="startTime" type="time" min="09:00" max="18:00"  required />
+                            <input class="form-control" id="startTime" max="18:00" min="09:00" name="startTime"
+                                   required type="time"/>
                             <label for="startTime">Start Time</label>
 
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="endTime" id="endTime" type="time"  min="09:00" max="18:00" required />
+                            <input class="form-control" id="endTime" max="18:00" min="09:00" name="endTime" required
+                                   type="time"/>
                             <label for="endTime">End Time</label>
 
                         </div>
 
 
-
                         <!-- Message Input -->
                         <div class="form-floating mb-3">
-                            <textarea name="message" class="form-control" id="message" type="text" placeholder="Content" style="height: 10rem;"  required></textarea>
+                            <textarea class="form-control" id="message" name="message" placeholder="Content" required
+                                      style="height: 10rem;" type="text"></textarea>
                             <label for="message">Note</label>
 
                         </div>
@@ -65,7 +67,7 @@
 
                         <!-- Submit button -->
                         <div class="d-grid">
-                            <button class="btn btn-primary btn-lg "  type="submit">Submit</button>
+                            <button class="btn btn-primary btn-lg " type="submit">Submit</button>
                         </div>
                     </form>
                     <!-- End of contact form -->
@@ -75,7 +77,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script th:src="@{/assets/jquery/jquery.min.js}"></script>

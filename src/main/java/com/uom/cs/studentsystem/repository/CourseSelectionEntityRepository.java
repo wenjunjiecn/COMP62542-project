@@ -1,6 +1,5 @@
 package com.uom.cs.studentsystem.repository;
 
-import com.uom.cs.studentsystem.model.AdditionalActivityEntity;
 import com.uom.cs.studentsystem.model.CourseSelectionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
