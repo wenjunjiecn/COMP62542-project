@@ -22,12 +22,12 @@
 
 
 
-                    <form id="contactForm" th:action="@{/timetable/add}" method="post">
+                    <form th:action="@{/timetable/add}" method="post">
 
 
 
                         <div class="form-floating">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" required>
+                            <select class="form-select" name="dayInWeek" id="floatingSelect" aria-label="Floating label select example" required>
                                 <option style='display: none'></option>
                                 <option value="1">Monday</option>
                                 <option value="2">Tuesday</option>
@@ -42,13 +42,13 @@
 
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="startTime" type="time" min="09:00" max="18:00"  data-sb-validations="required" required />
+                            <input class="form-control" name="startTime" id="startTime" type="time" min="09:00" max="18:00"  required />
                             <label for="startTime">Start Time</label>
 
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="endTime" type="time"  min="09:00" max="18:00" data-sb-validations="required" required />
+                            <input class="form-control" name="endTime" id="endTime" type="time"  min="09:00" max="18:00" required />
                             <label for="endTime">End Time</label>
 
                         </div>
@@ -57,7 +57,7 @@
 
                         <!-- Message Input -->
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" id="message" type="text" placeholder="Content" style="height: 10rem;" data-sb-validations="required" required></textarea>
+                            <textarea name="message" class="form-control" id="message" type="text" placeholder="Content" style="height: 10rem;"  required></textarea>
                             <label for="message">Note</label>
 
                         </div>
@@ -65,7 +65,7 @@
 
                         <!-- Submit button -->
                         <div class="d-grid">
-                            <button class="btn btn-primary btn-lg " id="submitButton" type="submit">Submit</button>
+                            <button class="btn btn-primary btn-lg "  type="submit">Submit</button>
                         </div>
                     </form>
                     <!-- End of contact form -->

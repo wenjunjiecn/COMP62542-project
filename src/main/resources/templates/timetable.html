@@ -10,13 +10,16 @@
 </head>
 <body>
   <div th:replace="header::header-body"></div>
+  <div style="padding-bottom: 30px"></div>
   <header class="cd-main-header text-center flex flex-column flex-center">
-    <h1 class="text-xl">Schedule</h1>
+    <h1 class="text-xl">Timetable</h1>
+    <button class="btn btn-primary btn-lg" onclick="window.location.href='/timetable/add'">
+      Add Activity
+    </button>
   </header>
 <!--  Add additional activity button -->
-  <button class="btn btn-primary btn-lg" onclick="window.location.href='/timetable/add'">
-    Add Activity
-  </button>
+
+
 
   <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
     <div class="cd-schedule__timeline">
@@ -53,9 +56,13 @@
           <ul>
 
             <li th:each="item : ${Monday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="event-abs-circuit" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:data-content="@{/assets/timetable/deletable}" data-event="event-1" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
+
+
               </a>
+
+
             </li>
           </ul>
         </li>
@@ -64,7 +71,11 @@
           <div class="cd-schedule__top-info"><span>Tuesday</span></div>
 
           <ul>
-
+            <li th:each="item : ${Tuesday}" class="cd-schedule__event">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name" th:text="${item.message}"></em>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -72,7 +83,11 @@
           <div class="cd-schedule__top-info"><span>Wednesday</span></div>
 
           <ul>
-
+            <li th:each="item : ${Wednesday}" class="cd-schedule__event">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="deletable" data-event="event-1" href="#0">
+                <em class="cd-schedule__name" th:text="${item.message}"></em>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -80,7 +95,11 @@
           <div class="cd-schedule__top-info"><span>Thursday</span></div>
 
           <ul>
-
+            <li th:each="item : ${Thursday}" class="cd-schedule__event">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name" th:text="${item.message}"></em>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -88,7 +107,35 @@
           <div class="cd-schedule__top-info"><span>Friday</span></div>
 
           <ul>
+            <li th:each="item : ${Friday}" class="cd-schedule__event">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name" th:text="${item.message}"></em>
+              </a>
+            </li>
+          </ul>
+        </li>
 
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>Saturday</span></div>
+
+          <ul>
+            <li th:each="item : ${Saturday}" class="cd-schedule__event">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name" th:text="${item.message}"></em>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>Sunday</span></div>
+
+          <ul>
+            <li th:each="item : ${Sunday}" class="cd-schedule__event">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="deletable" data-event="event-1" href="#0">
+                <em class="cd-schedule__name" th:text="${item.message}"></em>
+              </a>
+            </li>
           </ul>
         </li>
       </ul>
@@ -102,14 +149,19 @@
         </div>
 
         <div class="cd-schedule-modal__header-bg"></div>
+        <button type="button" class="delete_button btn btn-danger" style="position: absolute;bottom: 5px;right: 5px;z-index:999">Delete Activity</button>
+
       </header>
 
-      <div class="cd-schedule-modal__body">
-        <div class="cd-schedule-modal__event-info"></div>
-        <div class="cd-schedule-modal__body-bg"></div>
+      <div class="cd-schedule-modal__body" style="display: none" >
+        <div class="cd-schedule-modal__event-info" hidden>
+
+        </div>
+
+        <div class="cd-schedule-modal__body-bg" hidden></div>
       </div>
 
-      <a href="#0" class="cd-schedule-modal__close text-replace">Close</a>
+      <a href="#0" class="cd-schedule-modal__close text-replace" hidden>Close</a>
     </div>
 
     <div class="cd-schedule__cover-layer"></div>
