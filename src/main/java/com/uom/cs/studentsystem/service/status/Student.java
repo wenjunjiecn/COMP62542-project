@@ -40,4 +40,8 @@ public class Student implements Serializable {
     public String getName() {
         return name;
     }
+
+    public Boolean hasTimeTablePermission(){
+        return registerStatus.hasTimetablePermission();
+    }
 }

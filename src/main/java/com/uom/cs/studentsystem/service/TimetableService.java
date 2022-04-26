@@ -44,7 +44,6 @@ public class TimetableService {
     public boolean removeAdditionalActivity(Student student,String messageId){
         long mid = Long.parseLong(messageId);
         if(isMessageMatchStudent(student,mid)){
-
             additionalActivityEntityRepository.deleteById(mid);
             return true;
         }

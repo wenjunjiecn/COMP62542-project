@@ -8,4 +8,8 @@ import java.io.Serializable;
  */
 public interface IRegisterStatus extends Serializable {
     String checkStatus();
+
+    default Boolean hasTimetablePermission() {
+        return false;
+    }
 }

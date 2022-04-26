@@ -9,4 +9,9 @@ public class FullyRegisterStatus implements IRegisterStatus{
     public String checkStatus() {
         return "Fully Register";
     }
+
+    @Override
+    public Boolean hasTimetablePermission() {
+        return true;
+    }
 }
