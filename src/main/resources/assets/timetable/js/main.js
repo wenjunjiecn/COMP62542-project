@@ -112,10 +112,10 @@
 		this.modalDate.textContent = target.getAttribute('data-start')+' - '+target.getAttribute('data-end');
 		this.modal.setAttribute('data-event', target.getAttribute('data-event'));
 		var eventType=target.getAttribute('event-type');
-
+		console.log(target.getAttribute("data-event"))
 		if(eventType=="additional"){
 			console.log("event-type"+eventType+"yesyes")
-			this.modalDeleteForm.style.display='block';
+			this.modalDeleteButton.style.display='block';
 			var eventId=target.getAttribute('event-id')
 			this.modalDeleteForm.setAttribute('action','/timetable/delete/'+eventId)
 			this.modalDeleteButton.addEventListener('click',function (){
@@ -123,7 +123,7 @@
 				this.modalDeleteForm.submit();
 			})
 		}else{
-			this.modalDeleteForm.style.display='none';
+			this.modalDeleteButton.style.display='none';
 		}
 
 		//update event content

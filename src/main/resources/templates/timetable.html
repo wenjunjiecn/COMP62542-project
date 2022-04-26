@@ -55,7 +55,7 @@
 
           <ul>
             <li th:each="item : ${Monday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -67,7 +67,7 @@
 
           <ul>
             <li th:each="item : ${Tuesday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -79,7 +79,7 @@
 
           <ul>
             <li th:each="item : ${Wednesday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -91,7 +91,7 @@
 
           <ul>
             <li th:each="item : ${Thursday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -103,7 +103,7 @@
 
           <ul>
             <li th:each="item : ${Friday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -115,7 +115,7 @@
 
           <ul>
             <li th:each="item : ${Saturday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -127,7 +127,7 @@
 
           <ul>
             <li th:each="item : ${Sunday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" th:data-event="${item.type}" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>

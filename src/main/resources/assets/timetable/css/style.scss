@@ -295,14 +295,14 @@ a {
   }
 }
 
-.cd-schedule__event [data-event="event-1"],
-.cd-schedule-modal[data-event="event-1"] .cd-schedule-modal__header-bg {
+.cd-schedule__event [data-event="additional"],
+.cd-schedule-modal[data-event="additional"] .cd-schedule-modal__header-bg {
 	// this is used to set a background color for the event and the modal window
 	background: var(--cd-color-event-1);
 }
 
-.cd-schedule__event [data-event="event-2"],
-.cd-schedule-modal[data-event="event-2"] .cd-schedule-modal__header-bg {
+.cd-schedule__event [data-event="course"],
+.cd-schedule-modal[data-event="course"] .cd-schedule-modal__header-bg {
 	background: var(--cd-color-event-2);
 }
 
