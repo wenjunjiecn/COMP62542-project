@@ -54,15 +54,10 @@
 
 
           <ul>
-
             <li th:each="item : ${Monday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:data-content="@{/assets/timetable/deletable}" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
-
-
               </a>
-
-
             </li>
           </ul>
         </li>
@@ -72,7 +67,7 @@
 
           <ul>
             <li th:each="item : ${Tuesday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="event-abs-circuit" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -84,7 +79,7 @@
 
           <ul>
             <li th:each="item : ${Wednesday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="deletable" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -96,7 +91,7 @@
 
           <ul>
             <li th:each="item : ${Thursday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="event-abs-circuit" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -108,7 +103,7 @@
 
           <ul>
             <li th:each="item : ${Friday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="event-abs-circuit" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -120,7 +115,7 @@
 
           <ul>
             <li th:each="item : ${Saturday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="event-abs-circuit" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -132,7 +127,7 @@
 
           <ul>
             <li th:each="item : ${Sunday}" class="cd-schedule__event">
-              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" data-content="deletable" data-event="event-1" href="#0">
+              <a th:data-start="${item.startTime}" th:data-end="${item.endTime}" th:event-type="${item.type}"  th:event-id="${#strings.toString(item.id)}" data-event="event-1" href="#0">
                 <em class="cd-schedule__name" th:text="${item.message}"></em>
               </a>
             </li>
@@ -149,7 +144,9 @@
         </div>
 
         <div class="cd-schedule-modal__header-bg"></div>
-        <button type="button" class="delete_button btn btn-danger" style="position: absolute;bottom: 5px;right: 5px;z-index:999">Delete Activity</button>
+        <form class="delete_form" action="#" method="post">
+          <button type="submit" class="delete_button btn btn-danger" style="position: absolute;bottom: 5px;right: 5px;z-index:999">Delete Activity</button>
+        </form>
 
       </header>
 

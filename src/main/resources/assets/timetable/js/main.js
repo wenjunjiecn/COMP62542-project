@@ -18,6 +18,7 @@
 		this.modalDate = this.modal.getElementsByClassName('cd-schedule-modal__date')[0];
 		this.modalEventName = this.modal.getElementsByClassName('cd-schedule-modal__name')[0];
 		this.coverLayer = this.element.getElementsByClassName('cd-schedule__cover-layer')[0];
+		this.modalDeleteForm= this.modal.getElementsByClassName('delete_form')[0];
 		this.modalDeleteButton = this.modal.getElementsByClassName('delete_button')[0];
 		this.modalMaxWidth = 0;
 		this.modalMaxHeight = 200;
@@ -110,9 +111,21 @@
 		this.modalEventName.textContent = target.getElementsByTagName('em')[0].textContent;
 		this.modalDate.textContent = target.getAttribute('data-start')+' - '+target.getAttribute('data-end');
 		this.modal.setAttribute('data-event', target.getAttribute('data-event'));
-		this.modalDeleteButton.addEventListener('click',function (){
-			window.open("https://baidu.com")
-		})
+		var eventType=target.getAttribute('event-type');
+
+		if(eventType=="additional"){
+			console.log("event-type"+eventType+"yesyes")
+			this.modalDeleteForm.style.display='block';
+			var eventId=target.getAttribute('event-id')
+			this.modalDeleteForm.setAttribute('action','/timetable/delete/'+eventId)
+			this.modalDeleteButton.addEventListener('click',function (){
+				console.log(eventId);
+				this.modalDeleteForm.submit();
+			})
+		}else{
+			this.modalDeleteForm.style.display='none';
+		}
+
 		//update event content
 		this.loadEventContent(target.getAttribute('data-content'));
 

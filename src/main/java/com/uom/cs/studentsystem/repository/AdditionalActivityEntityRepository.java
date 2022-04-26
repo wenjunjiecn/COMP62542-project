@@ -9,7 +9,7 @@ import java.util.List;
  * @author wenjunjie
  * @version 1.0
  */
-public interface AdditionalActivityEntityRepository extends JpaRepository<AdditionalActivityEntity, String> {
+public interface AdditionalActivityEntityRepository extends JpaRepository<AdditionalActivityEntity, Long> {
     List<AdditionalActivityEntity> findByStudentid(String studentid);
 
 

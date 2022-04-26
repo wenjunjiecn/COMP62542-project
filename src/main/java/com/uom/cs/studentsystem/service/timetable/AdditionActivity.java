@@ -22,11 +22,19 @@ public class AdditionActivity implements IActivity{
     @Override
     public List<TimetableItem> getActivityDetails() {
         LinkedList<TimetableItem> activity=new LinkedList<>();
-        TimetableItem item = new TimetableItem(this.startTime,this.endTime,this.dayInWeek);
+        TimetableItem item = new TimetableItem(this.id,this.startTime,this.endTime,this.dayInWeek);
         item.setMessage(this.message);
         item.setType(this.type);
         activity.add(item);
         return activity;
+    }
+
+    public AdditionActivity(String startTime, String endTime, Integer dayInWeek, String message, String studentid) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.dayInWeek = dayInWeek;
+        this.message = message;
+        this.studentid = studentid;
     }
 
     public AdditionActivity(AdditionalActivityEntity entity){

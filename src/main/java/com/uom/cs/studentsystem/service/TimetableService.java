@@ -37,12 +37,15 @@ public class TimetableService {
     }
     public void addAdditionalActivity(AdditionActivity activity){
         AdditionalActivityEntity entity= activity.convertToEntity();
+        System.out.println("entity==="+entity);
         additionalActivityEntityRepository.saveAndFlush(entity);
     }
 
     public boolean removeAdditionalActivity(Student student,String messageId){
-        if(isMessageMatchStudent(student,messageId)){
-            additionalActivityEntityRepository.deleteById(messageId);
+        long mid = Long.parseLong(messageId);
+        if(isMessageMatchStudent(student,mid)){
+
+            additionalActivityEntityRepository.deleteById(mid);
             return true;
         }
         return false;
@@ -52,9 +55,9 @@ public class TimetableService {
      *Check if the message belongs to the current user
      *to avoid illegal deletion of messages that do not belong to the user
      */
-    private boolean isMessageMatchStudent(Student student, String messageId){
+    private boolean isMessageMatchStudent(Student student, Long mid){
         String stuId = student.getId();
-        AdditionalActivityEntity entity = additionalActivityEntityRepository.getById(messageId);
+        AdditionalActivityEntity entity = additionalActivityEntityRepository.getById(mid);
         if(stuId.equals(entity.getStudentid())){
             return true;
         }

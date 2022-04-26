@@ -60,11 +60,20 @@ public class StudentTimetableController {
     }
 
     @PostMapping("/timetable/add")
-    public String addAdditionalActivity(@RequestBody AdditionActivity activity,HttpServletRequest request){
+    public String addAdditionalActivity(HttpServletRequest request){
+
         Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        if(!student.getId().equals(activity.getStudentid())){
-            return "403";
-        }
+        String startTime = request.getParameter("startTime");
+        String endTime = request.getParameter("endTime");
+        String message = request.getParameter("message");
+        Integer dayInWeek = Integer.parseInt(request.getParameter("dayInWeek"));
+        String stuId = student.getId();
+        AdditionActivity activity=new AdditionActivity(startTime,endTime,dayInWeek,message,stuId);
+
+//        if(!student.getId().equals(activity.getStudentid())){
+//            return "403";
+//        }
+
         timetableService.addAdditionalActivity(activity);
         return "redirect:/timetable";
     }
