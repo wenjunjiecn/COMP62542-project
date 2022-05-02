@@ -12,4 +12,8 @@ public interface IRegisterStatus extends Serializable {
     default Boolean hasTimetablePermission() {
         return false;
     }
+
+    default Boolean hasStudentUnionPermission() {
+        return false;
+    }
 }

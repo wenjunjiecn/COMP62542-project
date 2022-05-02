@@ -1,7 +1,6 @@
 package com.uom.cs.studentsystem.service;
 
 import com.uom.cs.studentsystem.model.StudentEntity;
-import com.uom.cs.studentsystem.model.VerifyData;
 import com.uom.cs.studentsystem.repository.StudentEntityRepository;
 import com.uom.cs.studentsystem.service.auth.VerifyStrategy;
 import com.uom.cs.studentsystem.service.status.Student;
