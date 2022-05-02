@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>document.getElementsByTagName("html")[0].className += " js";</script>
+    <link rel="stylesheet" href="../assets/timetable/css/style.css">
+    <title>Timetable</title>
+    <link th:rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css} "/>
+</head>
+
+<body>
+<div>
+    <div th:fragment="header-body">
+        <header class="p-3 bg-dark text-white">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                            <use xlink:href="#bootstrap"/>
+                        </svg>
+                    </a>
+
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="/studentSupport/computerScience" class="nav-link px-2 text-white">Computer Science</a></li>
+                        <li><a href="/studentSupport/mathematics" class="nav-link px-2 text-white">Mathematics</a></li>
+                    </ul>
+                    <div class="text-end">
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="btn btn-warning">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <header class="cd-main-header text-center flex flex-column flex-center">
+        <h1 class="text-xl"></h1>
+    </header>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Class_BEGIN
+                </th>
+                <th>Lecturer
+                </th>
+                <th>Class_END
+                </th>
+                <th>Class_DATE
+                </th>
+                <th>Operation
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="curriculum : ${curriculumList}">
+                <td th:text="${curriculum.classStartTime}">Onions</td>
+                <td th:text="${curriculum.teacher}">Onions</td>
+                <td th:text="${curriculum.classEndTime}">Onions</td>
+                <td th:text="${curriculum.classDate}">Onions</td>
+                <td >
+                    <a href="#" th:href="'/deleteCourse/' + ${curriculum.id}"
+                       class="btn btn-danger"
+                       role="button">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <span th:text="${error}"></span>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">
+                        Add new course
+                    </h4>
+                </div>
+                <form th:action="@{'/insert/'+${url}}" method="post">
+                    <div class="form-group">
+                        <label >Class_BEGIN</label>
+                        <input type="text" class="form-control" id="classStartTime" name="classStartTime" placeholder="12:00">
+                    </div>
+                    <div class="form-group">
+                        <label >Lecturer</label>
+                        <select class="form-control" name="teacherId">
+                            <option th:each="teacher:${teacherList}" name="teacherId" th:text="${teacher.name}" th:value="${teacher.id}" >Onions</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label >Class_END</label>
+                        <input type="text" class="form-control" id="classEndTime" name="classEndTime" placeholder="12:00">
+                    </div>
+                    <div class="form-group">
+                        <label >class_DATE</label>
+                        <select class="form-control" name="classDate">
+                            <option name="classDate" value="Monday">Monday</option>
+                            <option name="classDate" value="Tuesday">Tuesday</option>
+                            <option name="classDate" value="Wednesday">Wednesday</option>
+                            <option name="classDate" value="Thursday">Thursday</option>
+                            <option name="classDate" value="Friday">Friday</option>
+                            <option name="classDate" value="Saturday">Saturday</option>
+                            <option name="classDate" value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+                <span th:text="${error}"></span>
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Confirm</button>
+                </form>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                    </button>
+                    <!--<button type="submit" class="btn btn-primary">-->
+                        <!--提交-->
+                    <!--</button>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+<div style="position:relative;left:20px;top:500px">
+    <button class="btn btn-primary btn-lg" data-target="#myModal" data-toggle="modal">
+        Add new course
+    </button>
+</div>
+<script src="../assets/timetable/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
+<script src="../assets/timetable/js/main.js"></script>
+<script th:src="@{/assets/jquery/jquery.min.js}"></script>
+<script th:src="@{/assets/popper.js/popper.min.js}"></script>
+<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
