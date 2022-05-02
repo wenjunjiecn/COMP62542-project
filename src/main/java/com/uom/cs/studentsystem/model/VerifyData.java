@@ -1,4 +1,4 @@
-package com.uom.cs.studentsystem.service;
+package com.uom.cs.studentsystem.model;
 
 import java.util.HashMap;
 import java.util.Map;

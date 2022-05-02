@@ -1,7 +1,7 @@
 package com.uom.cs.studentsystem.service.auth;
 
 
-import com.uom.cs.studentsystem.service.VerifyData;
+import com.uom.cs.studentsystem.model.VerifyData;
 
 /**
  * @author wenjunjie

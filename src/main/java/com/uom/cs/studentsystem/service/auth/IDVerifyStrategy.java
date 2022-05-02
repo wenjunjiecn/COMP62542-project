@@ -1,6 +1,6 @@
 package com.uom.cs.studentsystem.service.auth;
 
-import com.uom.cs.studentsystem.service.VerifyData;
+import com.uom.cs.studentsystem.model.VerifyData;
 import com.uom.cs.studentsystem.repository.StudentEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
