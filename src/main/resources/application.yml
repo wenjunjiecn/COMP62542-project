@@ -1,0 +1,21 @@
+#datasource
+#spring.session.store-type=jdbc
+#spring.session.jdbc.initialize-schema=always
+#spring.session.timeout.seconds=900
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    password: root1234
+    url: jdbc:h2:file:./db/sample_data
+    username: root
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+

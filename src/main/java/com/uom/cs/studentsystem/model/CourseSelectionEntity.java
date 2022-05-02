@@ -1,22 +1,27 @@
 package com.uom.cs.studentsystem.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
- * @author wenjunjie
- * @version 1.0
+ * @version 1.0 created by yixuan on 2022/4/29 10:08
  */
-@Entity
-public class CourseSelectionEntity implements Serializable {
+@Entity(name = "course_selection")
+public class CourseSelectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
     private Long id;
-    @Column(nullable = false)
-    private String studentid;
-    @Column(nullable = false)
-    private Long courseid;
+
+    /**
+     * course_id
+     */
+    private Integer curriculumId;
+    /**
+     * student_Id
+     */
+    private Integer studentId;
 
     public Long getId() {
         return id;
@@ -26,19 +31,19 @@ public class CourseSelectionEntity implements Serializable {
         this.id = id;
     }
 
-    public String getStudentid() {
-        return studentid;
+    public Integer getCurriculumId() {
+        return curriculumId;
     }
 
-    public void setStudentid(String studentid) {
-        this.studentid = studentid;
+    public void setCurriculumId(Integer curriculumId) {
+        this.curriculumId = curriculumId;
     }
 
-    public Long getCourseid() {
-        return courseid;
+    public Integer getStudentId() {
+        return studentId;
     }
 
-    public void setCourseid(Long courseid) {
-        this.courseid = courseid;
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 }

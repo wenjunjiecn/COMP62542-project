@@ -9,6 +9,6 @@ import java.util.List;
  * @author wenjunjie
  * @version 1.0
  */
-public interface CourseSelectionEntityRepository extends JpaRepository<CourseSelectionEntity, Long> {
-    List<CourseSelectionEntity> findByStudentid(String studentid);
+public interface CourseSelectionEntityRepository extends JpaRepository<CourseSelectionEntity, String> {
+    List<CourseSelectionEntity> findAllByStudentId(Integer studentId);
 }

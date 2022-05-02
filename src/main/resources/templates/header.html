@@ -9,24 +9,23 @@
     <header class="p-3 bg-dark text-white">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" href="/">
-                    <svg aria-label="Bootstrap" class="bi me-2" height="32" role="img" width="40">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
                         <use xlink:href="#bootstrap"/>
                     </svg>
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a class="nav-link px-2 text-white" href="/">Home</a></li>
-                    <li><a class="nav-link px-2 text-white" href="/timetable">Timetable</a></li>
-                    <li><a class="nav-link px-2 text-white" href="#">Pricing</a></li>
-                    <li><a class="nav-link px-2 text-white" href="#">FAQs</a></li>
-                    <li><a class="nav-link px-2 text-white" href="#">About</a></li>
+                    <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="/timetable" class="nav-link px-2 text-white">Timetable</a></li>
+                    <li><a href="/computerScience" class="nav-link px-2 text-white">Computer Science</a></li>
+                    <li><a href="/mathematics" class="nav-link px-2 text-white">Mathematics</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">Course Units</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
                 </ul>
-
-
                 <div class="text-end">
-                    <form method="post" th:action="@{/logout}">
-                        <button class="btn btn-warning" type="submit">Logout</button>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="btn btn-warning">Logout</button>
                     </form>
                 </div>
             </div>
