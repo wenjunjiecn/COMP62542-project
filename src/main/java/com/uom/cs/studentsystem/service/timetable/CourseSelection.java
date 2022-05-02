@@ -25,7 +25,7 @@ public class CourseSelection implements IActivity {
         this.endTime = courseEntity.getEndTime();
         this.dayInWeek = courseEntity.getDayInWeek();
         this.message = courseEntity.getCourseName();
-        this.studentid = selectionEntity.getStudentid();
+//        this.studentid = selectionEntity.getStudentid();
 
     }
 

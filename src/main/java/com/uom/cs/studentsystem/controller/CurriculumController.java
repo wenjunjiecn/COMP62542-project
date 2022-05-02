@@ -3,7 +3,6 @@ package com.uom.cs.studentsystem.controller;
 import com.uom.cs.studentsystem.form.CurriculumForm;
 import com.uom.cs.studentsystem.model.CourseSelectionEntity;
 import com.uom.cs.studentsystem.model.CurriculumEntity;
-import com.uom.cs.studentsystem.model.StudentEntity;
 import com.uom.cs.studentsystem.model.TeacherCurriculumRelationEntity;
 import com.uom.cs.studentsystem.repository.CurriculumEntityRepository;
 import com.uom.cs.studentsystem.repository.TeacherCurriculumRelationEntityRepository;
@@ -12,6 +11,7 @@ import com.uom.cs.studentsystem.service.impl.ComputerScienceAdapterMathematics;
 import com.uom.cs.studentsystem.service.impl.ComputerScienceServiceImpl;
 import com.uom.cs.studentsystem.service.impl.CurriculumServiceImpl;
 import com.uom.cs.studentsystem.service.impl.MathematicsServiceImpl;
+import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.utils.ConstantUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +43,8 @@ public class CurriculumController {
 
     @GetMapping("/computerScience")
     public String computerScience(Model model, HttpServletRequest request) {
-        StudentEntity studentEntity = (StudentEntity) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, studentEntity.getId());
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, student.getId());
         model.addAttribute("curriculumList", curriculumEntityList);
         model.addAttribute("url", "computerScience");
         return "curriculum";
@@ -52,8 +52,8 @@ public class CurriculumController {
 
     @GetMapping("/mathematics")
     public String mathematics(Model model, HttpServletRequest request) {
-        StudentEntity studentEntity = (StudentEntity) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.MATHEMATICS, studentEntity.getId());
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.MATHEMATICS, student.getId());
         model.addAttribute("curriculumList", curriculumEntityList);
         model.addAttribute("url", "mathematics");
         return "curriculum";
@@ -61,12 +61,12 @@ public class CurriculumController {
 
     @GetMapping("/selectCourse/{url}/{id}")
     public String selectCourse(@PathVariable String url, @PathVariable Integer id, Model model, HttpServletRequest request) {
-        StudentEntity studentEntity = (StudentEntity) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         CourseSelectionEntity courseSelectionEntity = new CourseSelectionEntity();
         courseSelectionEntity.setCurriculumId(id);
-        courseSelectionEntity.setStudentId(Integer.parseInt(studentEntity.getId()));
+        courseSelectionEntity.setStudentId(Integer.parseInt(student.getId()));
         curriculumServiceImpl.saveCourseSelection(courseSelectionEntity);
-        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, studentEntity.getId());
+        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, student.getId());
         model.addAttribute("curriculumList", curriculumEntityList);
         return "redirect:/" + url;
     }
