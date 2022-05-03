@@ -146,9 +146,17 @@ public class StudentUnion implements Subject, Serializable {
     public void unsubscribeSpecificNewsletter(Observer obj, String type) {
         //studentUnionService.unsubscribeNewsletter(obj.studentId(), type);
         if (type.equals("academic")) {
-            academicNewsletterEntityRepository.deleteById(obj.studentId());
+            if (academicNewsletterEntityRepository.existsById(obj.studentId())) {
+                academicNewsletterEntityRepository.deleteById(obj.studentId());
+            }
         } else if (type.equals("sports")) {
-            sportsNewsletterEntityRepository.deleteById(obj.studentId());
+            if (sportsNewsletterEntityRepository.existsById(obj.studentId())) {
+                sportsNewsletterEntityRepository.deleteById(obj.studentId());
+            }
+        } else if (type.equals("social")) {
+            if (socialNewsletterEntityRepository.existsById(obj.studentId())) {
+                socialNewsletterEntityRepository.deleteById(obj.studentId());
+            }
         } else {
             System.out.println("illegal unsubscribe type");
         }
