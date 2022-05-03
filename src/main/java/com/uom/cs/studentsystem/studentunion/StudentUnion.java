@@ -2,11 +2,14 @@ package com.uom.cs.studentsystem.studentunion;
 
 
 import com.uom.cs.studentsystem.studentunion.model.AcademicNewsletterEntity;
+import com.uom.cs.studentsystem.studentunion.model.SocialNewsletterEntity;
 import com.uom.cs.studentsystem.studentunion.model.SportsNewsletterEntity;
 import com.uom.cs.studentsystem.studentunion.newsletter.AcademicNewsletter;
 import com.uom.cs.studentsystem.studentunion.newsletter.BasicNewsletter;
+import com.uom.cs.studentsystem.studentunion.newsletter.SocialNewsletter;
 import com.uom.cs.studentsystem.studentunion.newsletter.SportsNewsletter;
 import com.uom.cs.studentsystem.studentunion.repository.AcademicNewsletterEntityRepository;
+import com.uom.cs.studentsystem.studentunion.repository.SocialNewsletterEntityRepository;
 import com.uom.cs.studentsystem.studentunion.repository.SportsNewsletterEntityRepository;
 import com.uom.cs.studentsystem.studentunion.service.StudentUnionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,9 @@ public class StudentUnion implements Subject, Serializable {
 
     @Autowired
     private AcademicNewsletterEntityRepository academicNewsletterEntityRepository;
+
+    @Autowired
+    private SocialNewsletterEntityRepository socialNewsletterEntityRepository;
 
     //private HashMap<BasicNewsletter, HashMap<String, Observer>> observerMap;
 //    @Autowired
@@ -96,6 +102,9 @@ public class StudentUnion implements Subject, Serializable {
         } else if (type.equals("sports")) {
             SportsNewsletterEntity sportsNewsletterEntity = sportsNewsletterEntityRepository.getById(id);
             return sportsNewsletterEntity.getState();
+        } else if (type.equals("social")) {
+            SocialNewsletterEntity socialNewsletterEntity = socialNewsletterEntityRepository.getById(id);
+            return socialNewsletterEntity.getState();
         } else {
             System.out.println("illegal subscribe type");
             return "Error";
@@ -119,6 +128,11 @@ public class StudentUnion implements Subject, Serializable {
             sportsNewsletterEntity.setId(obj.studentId());
             sportsNewsletterEntity.setState("subscribe");
             sportsNewsletterEntityRepository.saveAndFlush(sportsNewsletterEntity);
+        } else if (type.equals("social")) {
+            SocialNewsletterEntity socialNewsletterEntity = new SocialNewsletterEntity();
+            socialNewsletterEntity.setId(obj.studentId());
+            socialNewsletterEntity.setState("subscribe");
+            socialNewsletterEntityRepository.saveAndFlush(socialNewsletterEntity);
         } else {
             System.out.println("illegal subscribe type");
         }

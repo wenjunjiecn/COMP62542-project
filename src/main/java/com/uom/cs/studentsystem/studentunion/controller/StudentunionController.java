@@ -53,4 +53,18 @@ public class StudentunionController {
         studentUnionService.unsubscribeNewsletter(student, "sports");
         return "redirect:/studentunion";
     }
+
+    @PostMapping("/studentunion/subscribeSocial")
+    public String subscribeSocial( Model model, HttpServletRequest request) {
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        studentUnionService.subscribeNewsletter(student, "social");
+        return "redirect:/studentunion";
+    }
+
+    @PostMapping("/studentunion/unsubscribeSocial")
+    public String unsubscribeSocial(HttpServletRequest request) {
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        studentUnionService.unsubscribeNewsletter(student, "social");
+        return "redirect:/studentunion";
+    }
 }
