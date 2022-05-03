@@ -3,7 +3,7 @@ package com.uom.cs.studentsystem.service;
 import com.uom.cs.studentsystem.model.CurriculumEntity;
 
 /**
- * @author cen
+ * @author yixuan
  * @version 1.0
  * @date 2022/5/1 23:43
  */

@@ -108,4 +108,6 @@ public class CurriculumController {
         return "redirect:/studentSupport";
     }
 
+    
+
 }

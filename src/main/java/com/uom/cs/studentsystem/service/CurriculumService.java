@@ -6,7 +6,7 @@ import com.uom.cs.studentsystem.service.curriculum.ComputerScience;
 import java.util.List;
 
 /**
- * @author cen
+ * @author yixuan
  * @version 1.0
  * @date 2022/5/1 22:39
  */

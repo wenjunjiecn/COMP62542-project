@@ -5,7 +5,7 @@ import com.uom.cs.studentsystem.repository.CurriculumEntityRepository;
 import com.uom.cs.studentsystem.service.ComputerScienceService;
 
 /**
- * @author cen
+ * @author yixuan
  * @version 1.0
  * @date 2022/5/1 23:16
  */

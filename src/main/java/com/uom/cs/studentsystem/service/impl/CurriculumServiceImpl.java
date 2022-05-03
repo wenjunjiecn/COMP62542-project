@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @version 1.0 created by cenjiangyu on 2022/4/28 16:21
+ * @version 1.0 created by yixuan on 2022/4/28 16:21
  */
 @Service
 public class CurriculumServiceImpl implements CurriculumService {

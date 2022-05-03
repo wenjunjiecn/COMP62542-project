@@ -4,7 +4,7 @@ import com.uom.cs.studentsystem.model.CurriculumEntity;
 
 /**
  *计算机科学service
- * @author cen
+ * @author yixuan
  * @version 1.0
  * @date 2022/5/1 22:31
  */
