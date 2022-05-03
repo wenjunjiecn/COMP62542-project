@@ -95,19 +95,23 @@ public class StudentUnion implements Subject, Serializable {
         //这里应该返回一个列表的message,不
     }
 
-    public String getSubscribeStatus(String id, String type) {
+    public boolean getSubscribeStatus(String id, String type) {
         if (type.equals("academic")) {
-            AcademicNewsletterEntity academicNewsletterEntity = academicNewsletterEntityRepository.getById(id);
-            return academicNewsletterEntity.getState();
+            //AcademicNewsletterEntity academicNewsletterEntity = academicNewsletterEntityRepository.getById(id);
+            //return academicNewsletterEntity.getState();
+            return academicNewsletterEntityRepository.existsById(id);
         } else if (type.equals("sports")) {
-            SportsNewsletterEntity sportsNewsletterEntity = sportsNewsletterEntityRepository.getById(id);
-            return sportsNewsletterEntity.getState();
+            //SportsNewsletterEntity sportsNewsletterEntity = sportsNewsletterEntityRepository.getById(id);
+            //return sportsNewsletterEntity.getState();
+            return sportsNewsletterEntityRepository.existsById(id);
         } else if (type.equals("social")) {
-            SocialNewsletterEntity socialNewsletterEntity = socialNewsletterEntityRepository.getById(id);
-            return socialNewsletterEntity.getState();
+            //SocialNewsletterEntity socialNewsletterEntity = socialNewsletterEntityRepository.getById(id);
+            //return socialNewsletterEntity.getState();
+            return socialNewsletterEntityRepository.existsById(id);
         } else {
             System.out.println("illegal subscribe type");
-            return "Error";
+            //return "Error";
+            return false;
         }
     }
 

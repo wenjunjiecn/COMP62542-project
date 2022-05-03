@@ -23,7 +23,12 @@ public class StudentUnionService {
     private StudentUnion studentUnion;
 
     public String getSubscribeStatus(String id, String type) {
-        return studentUnion.getSubscribeStatus(id, type);
+        if (studentUnion.getSubscribeStatus(id, type)) {
+            return "subscribe";
+        } else {
+            return "unsubscribe";
+        }
+        //return studentUnion.getSubscribeStatus(id, type);
 //        if (type.equals("academic")) {
 //            AcademicNewsletterEntity academicNewsletterEntity = academicNewsletterEntityRepository.getById(id);
 //            return academicNewsletterEntity.getState();

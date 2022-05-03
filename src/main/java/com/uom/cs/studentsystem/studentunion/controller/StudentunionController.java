@@ -21,8 +21,11 @@ public class StudentunionController {
 
 
     @GetMapping("/studentunion")
-    public String getLoginPage(Model model) {
-
+    public String getLoginPage(Model model, HttpServletRequest request) {
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        model.addAttribute("academic", studentUnionService.getSubscribeStatus(student.getId(), "academic"));
+        model.addAttribute("sports", studentUnionService.getSubscribeStatus(student.getId(), "sports"));
+        model.addAttribute("social", studentUnionService.getSubscribeStatus(student.getId(), "social"));
         return "studentunion";
     }
 
