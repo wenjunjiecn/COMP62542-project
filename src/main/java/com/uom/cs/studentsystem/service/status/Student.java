@@ -1,6 +1,7 @@
 package com.uom.cs.studentsystem.service.status;
 
 import com.uom.cs.studentsystem.model.StudentEntity;
+import com.uom.cs.studentsystem.studentunion.ObserverOfStudentUnion;
 
 import java.io.Serializable;
 
@@ -14,6 +15,7 @@ public class Student implements Serializable {
     private String id;
     private String name;
     private IRegisterStatus registerStatus;
+//    private ObserverOfStudentUnion observerOfStudentUnion;
 
     /**
      * Generate StudentBo object from Student object
@@ -22,6 +24,7 @@ public class Student implements Serializable {
         this.id = studentEntity.getId();
         this.name = studentEntity.getName();
         this.registerStatus = RegisterStatusFactory.getRegisterStatus(studentEntity.getState());
+//        this.observerOfStudentUnion = new ObserverOfStudentUnion(this);
     }
 
     /**

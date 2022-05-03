@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table> <!-- border="1" 显示边框  -->
+    <!-- 表格头部 -->
+    <thead>
+    <tr> <!-- 行 -->
+        <th>Newsletter</th><th>subscribe</th><th>unsubscribe</th> <!-- 列 -->
+    </tr>
+    </thead>
+
+    <!-- 表格主体 -->
+    <tbody>
+    <tr>
+        <td>Academic</td>
+        <td><form method="post" action="/studentunion/subscribeAcademic">
+        <button type="submit"> Subscribe</button>
+        </form></td>
+        <td><form method="post" action="/studentunion/unsubscribeAcademic">
+        <button type="submit"> Unsubscribe</button>
+        </form></td>
+    </tr>
+    </tbody>
+    <tbody>
+    <tr>
+        <td>Sports</td>
+        <td><form method="post" action="/studentunion/subscribeSports">
+            <button type="submit"> Subscribe</button>
+        </form></td>
+        <td><form method="post" action="/studentunion/unsubscribeSports">
+            <button type="submit"> Unsubscribe</button>
+        </form></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
