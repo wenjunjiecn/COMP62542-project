@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="" name="description">
-    <meta content="Mark Otto, Jacob Thornton, and Bootstrap contributors" name="author">
-    <meta content="Hugo 0.88.1" name="generator">
-    <title>Spring Boot Thymeleaf - Bootstrap Static Files</title>
+
+    <title>Login</title>
 
     <link th:href="@{/assets/bootstrap/css/bootstrap.min.css} " th:rel="stylesheet"/>
-    <link th:href="@{/assets/timetable/css/login.css}" th:rel="stylesheet">
+<!--    <link th:href="@{/assets/timetable/css/login.css}" th:rel="stylesheet">-->
 </head>
-<body class="text-center">
+<body>
 
 
-<main class="form-signin">
+<div class="card w-50 position-absolute top-50 start-50 translate-middle p-5 margin-top-sm  shadow-lg p-3 mb-5 bg-body rounded">
+
 
     <form method="post" th:action="@{/login}">
         <img alt="UoM Student System"
@@ -22,17 +22,20 @@
              src="https://www.manchester.ac.uk/medialibrary/assets/corporate/images/design/logo-university-of-manchester.png">
         <h1 class="h3 mb-3 fw-normal">Uom Student System</h1>
 
-        <div class="form-floating">
+        <div class="form-floating mt-5">
             <input class="form-control" id="floatingInput" name="id" placeholder="123456" type="text">
             <label for="floatingInput">User ID</label>
         </div>
 
+
+
         <span th:text="${error}"></span>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+
+        <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
     </form>
-</main>
+</div>
 
 <script th:src="@{/assets/jquery/jquery.min.js}"></script>
 <script th:src="@{/assets/popper.js/popper.min.js}"></script>
