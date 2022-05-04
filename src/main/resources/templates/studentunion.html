@@ -1,77 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Subscribe Center(Provided by Student Union)</title>
+    <link th:href="@{/assets/bootstrap/css/bootstrap.min.css} " th:rel="stylesheet"/>
 </head>
 <body>
+<div th:replace="header::header-body"></div>
+<div class="w-50 mx-auto" style="margin-top: 5em">
+<h1>Welcome to the Student Union Subscription Centre</h1>
+</div>
+<div class="card w-50 mx-auto p-5 margin-top-sm">
+    <h2 class="m-2">Subscribe Newsletter by Topic</h2>
+    <div class="m-2">
+        <table class="table"> <!-- border="1" 显示边框  -->
+            <!-- 表格头部 -->
+            <thead>
+            <tr> <!-- 行 -->
+                <th>Newsletter</th>
+                <th>subscribe</th>
+                <th>unsubscribe</th> <!-- 列 -->
+            </tr>
+            </thead>
 
-<table> <!-- border="1" 显示边框  -->
-    <!-- 表格头部 -->
-    <thead>
-    <tr> <!-- 行 -->
-        <th>Newsletter</th><th>subscribe</th><th>unsubscribe</th> <!-- 列 -->
-    </tr>
-    </thead>
+            <!-- 表格主体 -->
+            <tbody>
+            <tr>
+                <td>Academic</td>
+                <td>
+                    <form method="post" action="/studentunion/subscribeAcademic">
+                        <button type="submit" class="btn btn-primary"> Subscribe</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/studentunion/unsubscribeAcademic">
+                        <button type="submit"  class="btn btn-primary"> Unsubscribe</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+                <td>Sports</td>
+                <td>
+                    <form method="post" action="/studentunion/subscribeSports">
+                        <button type="submit" class="btn btn-primary"> Subscribe</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/studentunion/unsubscribeSports">
+                        <button type="submit"  class="btn btn-primary"> Unsubscribe</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+                <td>Social</td>
+                <td>
+                    <form method="post" action="/studentunion/subscribeSocial">
+                        <button type="submit"  class="btn btn-primary"> Subscribe</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/studentunion/unsubscribeSocial">
+                        <button type="submit"  class="btn btn-primary"> Unsubscribe</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+>
+<!--<table border="1">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Newsletter</th><th>subscribe / unsubscribe</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--        <tr>-->
+<!--            <td>Academic</td><td style="text-align:center"><p th:text="${academic}"/></td>-->
+<!--        </tr>-->
+<!--    </tbody>-->
+<!--    <tbody>-->
+<!--        <tr>-->
+<!--            <td>Sport</td><td style="text-align:center"><p th:text="${sports}"/></td>-->
+<!--        </tr>-->
+<!--    </tbody>-->
+<!--    <tbody>-->
+<!--        <tr>-->
+<!--            <td>Social</td><td style="text-align:center"><p th:text="${social}"/></td>-->
+<!--        </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
 
-    <!-- 表格主体 -->
-    <tbody>
-    <tr>
-        <td>Academic</td>
-        <td><form method="post" action="/studentunion/subscribeAcademic">
-        <button type="submit"> Subscribe</button>
-        </form></td>
-        <td><form method="post" action="/studentunion/unsubscribeAcademic">
-        <button type="submit"> Unsubscribe</button>
-        </form></td>
-    </tr>
-    </tbody>
-    <tbody>
-    <tr>
-        <td>Sports</td>
-        <td><form method="post" action="/studentunion/subscribeSports">
-            <button type="submit"> Subscribe</button>
-        </form></td>
-        <td><form method="post" action="/studentunion/unsubscribeSports">
-            <button type="submit"> Unsubscribe</button>
-        </form></td>
-    </tr>
-    </tbody>
-    <tbody>
-    <tr>
-        <td>Social</td>
-        <td><form method="post" action="/studentunion/subscribeSocial">
-            <button type="submit"> Subscribe</button>
-        </form></td>
-        <td><form method="post" action="/studentunion/unsubscribeSocial">
-            <button type="submit"> Unsubscribe</button>
-        </form></td>
-    </tr>
-    </tbody>
-</table>
+<div class="card w-50 mx-auto p-5 margin-bottom-lg">
+    <h2 class="m-2">Your subscription status</h2>
+    <div>
+        <table class="table m-2">
+            <thead>
+            <tr>
+                <th>Newsletter type</th>
+                <th>Subscription Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>Newsletter</th><th>subscribe / unsubscribe</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Academic</td><td style="text-align:center"><p th:text="${academic}"/></td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr>
-            <td>Sport</td><td style="text-align:center"><p th:text="${sports}"/></td>
-        </tr>
-    </tbody>
-    <tbody>
-        <tr>
-            <td>Social</td><td style="text-align:center"><p th:text="${social}"/></td>
-        </tr>
-    </tbody>
-</table>
+                <td>Academic</td>
+                <td><p th:text="${academic}"/></td>
 
+            </tr>
+            <tr>
+                <td>Sport</td>
+                <td><p th:text="${sports}"/></td>
+            </tr>
+            <tr>
+                <td>Social</td>
+                <td><p th:text="${social}"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<script th:src="@{/assets/jquery/jquery.min.js}"></script>
+<script th:src="@{/assets/popper.js/popper.min.js}"></script>
+<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
 </body>
+
 </html>
