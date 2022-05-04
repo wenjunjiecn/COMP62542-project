@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class SportsNewsletterEntity implements Serializable {
+public class SportsNewsletterEntity implements Serializable, BasicNewsletterEntity {
     private static final long serialVersionUID = 6687929992161255473L;
 
     @Id

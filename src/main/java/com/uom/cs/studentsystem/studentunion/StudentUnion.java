@@ -2,29 +2,21 @@ package com.uom.cs.studentsystem.studentunion;
 
 
 import com.uom.cs.studentsystem.studentunion.model.AcademicNewsletterEntity;
-import com.uom.cs.studentsystem.studentunion.model.SocialNewsletterEntity;
-import com.uom.cs.studentsystem.studentunion.model.SportsNewsletterEntity;
-import com.uom.cs.studentsystem.studentunion.newsletter.AcademicNewsletter;
-import com.uom.cs.studentsystem.studentunion.newsletter.BasicNewsletter;
-import com.uom.cs.studentsystem.studentunion.newsletter.SocialNewsletter;
-import com.uom.cs.studentsystem.studentunion.newsletter.SportsNewsletter;
-import com.uom.cs.studentsystem.studentunion.repository.AcademicNewsletterEntityRepository;
-import com.uom.cs.studentsystem.studentunion.repository.SocialNewsletterEntityRepository;
-import com.uom.cs.studentsystem.studentunion.repository.SportsNewsletterEntityRepository;
-import com.uom.cs.studentsystem.studentunion.service.StudentUnionService;
+import com.uom.cs.studentsystem.studentunion.model.BasicNewsletterEntity;
+import com.uom.cs.studentsystem.studentunion.model.NewsletterEntityFactory;
+import com.uom.cs.studentsystem.studentunion.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Component
 public class StudentUnion implements Subject, Serializable {
     private static final long serialVersionUID = 6687929992161255473L;
     private static final StudentUnion instance = new StudentUnion();
+    //private static final NewsletterEntityRepositoryFactory newsletterEntityRepositoryFactory = new NewsletterEntityRepositoryFactory();
     private List<Observer> observers;
     private String message;
     private boolean changed;
@@ -38,6 +30,8 @@ public class StudentUnion implements Subject, Serializable {
 
     @Autowired
     private SocialNewsletterEntityRepository socialNewsletterEntityRepository;
+
+    private static final NewsletterEntityRepositoryFactory newsletterEntityRepositoryFactory = new NewsletterEntityRepositoryFactory();
 
     //private HashMap<BasicNewsletter, HashMap<String, Observer>> observerMap;
 //    @Autowired
@@ -117,29 +111,27 @@ public class StudentUnion implements Subject, Serializable {
 
     @Override
     public void subscribeSpecificNewsletter(Observer obj, String type) {
-        //studentUnionService.subscribeNewsletter(obj.studentId(), type);
-        //AcademicNewsletterEntity academicNewsletterEntity = new AcademicNewsletterEntity();
-        //academicNewsletterEntity.setId(obj.studentId());
-        //academicNewsletterEntity.setState("subscribe");
-        //academicNewsletterEntityRepository.saveAndFlush(academicNewsletterEntity);
-        if (type.equals("academic")) {
-            AcademicNewsletterEntity academicNewsletterEntity = new AcademicNewsletterEntity();
-            academicNewsletterEntity.setId(obj.studentId());
-            academicNewsletterEntity.setState("subscribe");
-            academicNewsletterEntityRepository.saveAndFlush(academicNewsletterEntity);
-        } else if (type.equals("sports")) {
-            SportsNewsletterEntity sportsNewsletterEntity = new SportsNewsletterEntity();
-            sportsNewsletterEntity.setId(obj.studentId());
-            sportsNewsletterEntity.setState("subscribe");
-            sportsNewsletterEntityRepository.saveAndFlush(sportsNewsletterEntity);
-        } else if (type.equals("social")) {
-            SocialNewsletterEntity socialNewsletterEntity = new SocialNewsletterEntity();
-            socialNewsletterEntity.setId(obj.studentId());
-            socialNewsletterEntity.setState("subscribe");
-            socialNewsletterEntityRepository.saveAndFlush(socialNewsletterEntity);
-        } else {
-            System.out.println("illegal subscribe type");
-        }
+        BasicNewsletterEntity basicNewsletterEntity = NewsletterEntityFactory.getNewsletterEntityFactory(obj, type);
+        newsletterEntityRepositoryFactory.saveEntity(basicNewsletterEntity);
+        //academicNewsletterEntityRepository.saveAndFlush((AcademicNewsletterEntity) basicNewsletterEntity);
+//        if (type.equals("academic")) {
+//            AcademicNewsletterEntity academicNewsletterEntity = new AcademicNewsletterEntity();
+//            academicNewsletterEntity.setId(obj.studentId());
+//            academicNewsletterEntity.setState("subscribe");
+//            academicNewsletterEntityRepository.saveAndFlush(academicNewsletterEntity);
+//        } else if (type.equals("sports")) {
+//            SportsNewsletterEntity sportsNewsletterEntity = new SportsNewsletterEntity();
+//            sportsNewsletterEntity.setId(obj.studentId());
+//            sportsNewsletterEntity.setState("subscribe");
+//            sportsNewsletterEntityRepository.saveAndFlush(sportsNewsletterEntity);
+//        } else if (type.equals("social")) {
+//            SocialNewsletterEntity socialNewsletterEntity = new SocialNewsletterEntity();
+//            socialNewsletterEntity.setId(obj.studentId());
+//            socialNewsletterEntity.setState("subscribe");
+//            socialNewsletterEntityRepository.saveAndFlush(socialNewsletterEntity);
+//        } else {
+//            System.out.println("illegal subscribe type");
+//        }
     }
 
     @Override
