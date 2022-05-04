@@ -45,4 +45,9 @@ public class AuthController {
         request.getSession().removeAttribute(ConstantUtils.USER_SESSION_KEY);
         return "redirect:/login";
     }
+
+    @GetMapping("/message")
+    public String getMessageCenter(HttpServletRequest request){
+        return "messagecenter";
+    }
 }
