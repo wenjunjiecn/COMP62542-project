@@ -29,84 +29,84 @@ import java.util.List;
  */
 @Controller
 public class CurriculumController {
-    @Autowired
-    private CurriculumServiceImpl curriculumServiceImpl;
-
-    @Autowired
-    private CurriculumEntityRepository curriculumEntityRepository;
-
-    @Autowired
-    private TeacherCurriculumRelationEntityRepository teacherCurriculumRelationEntityRepository;
-
-    @Autowired
-    private TeacherEntityRepository teacherEntityRepository;
-
-    @GetMapping("/computerScience")
-    public String computerScience(Model model, HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, student.getId());
-        model.addAttribute("curriculumList", curriculumEntityList);
-        model.addAttribute("url", "computerScience");
-        return "curriculum";
-    }
-
-    @GetMapping("/mathematics")
-    public String mathematics(Model model, HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.MATHEMATICS, student.getId());
-        model.addAttribute("curriculumList", curriculumEntityList);
-        model.addAttribute("url", "mathematics");
-        return "curriculum";
-    }
-
-    @GetMapping("/selectCourse/{url}/{id}")
-    public String selectCourse(@PathVariable String url, @PathVariable Integer id, Model model, HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        CourseSelectionEntity courseSelectionEntity = new CourseSelectionEntity();
-        courseSelectionEntity.setCurriculumId(id);
-        courseSelectionEntity.setStudentId(Integer.parseInt(student.getId()));
-        curriculumServiceImpl.saveCourseSelection(courseSelectionEntity);
-        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, student.getId());
-        model.addAttribute("curriculumList", curriculumEntityList);
-        return "redirect:/" + url;
-    }
-
-    @GetMapping("/deleteCourse/{id}")
-    public String deleteCourse(@PathVariable Integer id) {
-        curriculumServiceImpl.deleteCourse(id.longValue());
-        return "redirect:/studentSupport";
-    }
-
-    @PostMapping("/insert/computerScience")
-    public String insertComputerScience(CurriculumForm curriculumForm, Model model, HttpServletRequest request) {
-        CurriculumEntity curriculumEntity = new CurriculumEntity();
-        BeanUtils.copyProperties(curriculumForm, curriculumEntity);
-        curriculumEntity.setSubject(ConstantUtils.COMPUTER_SCIENCE);
-        ComputerScienceServiceImpl computerScienceService = new ComputerScienceServiceImpl(curriculumEntity, curriculumEntityRepository);
-        CurriculumEntity curriculumEntityDB = curriculumServiceImpl.insertComputerScience(computerScienceService);
-        TeacherCurriculumRelationEntity teacherCurriculumRelationEntity = new TeacherCurriculumRelationEntity();
-        teacherCurriculumRelationEntity.setCurriculumId(curriculumEntityDB.getId().intValue());
-        teacherCurriculumRelationEntity.setTeacherId(curriculumForm.getTeacherId());
-        teacherCurriculumRelationEntityRepository.save(teacherCurriculumRelationEntity);
-        model.addAttribute("teacherList", teacherEntityRepository.findAll());
-        return "redirect:/studentSupport";
-    }
-
-    @PostMapping("/insert/mathematics")
-    public String insertMathematics(CurriculumForm curriculumForm, Model model, HttpServletRequest request) {
-        CurriculumEntity curriculumEntity = new CurriculumEntity();
-        BeanUtils.copyProperties(curriculumForm, curriculumEntity);
-        curriculumEntity.setSubject(ConstantUtils.MATHEMATICS);
-        MathematicsServiceImpl mathematicsService = new MathematicsServiceImpl(curriculumEntity, curriculumEntityRepository);
-        ComputerScienceAdapterMathematics adapterMathematics = new ComputerScienceAdapterMathematics(mathematicsService);
-        CurriculumEntity curriculumEntityDB = curriculumServiceImpl.insertComputerScience(adapterMathematics);
-        TeacherCurriculumRelationEntity teacherCurriculumRelationEntity = new TeacherCurriculumRelationEntity();
-        teacherCurriculumRelationEntity.setCurriculumId(curriculumEntityDB.getId().intValue());
-        teacherCurriculumRelationEntity.setTeacherId(curriculumForm.getTeacherId());
-        teacherCurriculumRelationEntityRepository.save(teacherCurriculumRelationEntity);
-        model.addAttribute("teacherList", teacherEntityRepository.findAll());
-        return "redirect:/studentSupport";
-    }
+//    @Autowired
+//    private CurriculumServiceImpl curriculumServiceImpl;
+//
+//    @Autowired
+//    private CurriculumEntityRepository curriculumEntityRepository;
+//
+//    @Autowired
+//    private TeacherCurriculumRelationEntityRepository teacherCurriculumRelationEntityRepository;
+//
+//    @Autowired
+//    private TeacherEntityRepository teacherEntityRepository;
+//
+//    @GetMapping("/computerScience")
+//    public String computerScience(Model model, HttpServletRequest request) {
+//        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+//        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, student.getId());
+//        model.addAttribute("curriculumList", curriculumEntityList);
+//        model.addAttribute("url", "computerScience");
+//        return "curriculum";
+//    }
+//
+//    @GetMapping("/mathematics")
+//    public String mathematics(Model model, HttpServletRequest request) {
+//        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+//        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.MATHEMATICS, student.getId());
+//        model.addAttribute("curriculumList", curriculumEntityList);
+//        model.addAttribute("url", "mathematics");
+//        return "curriculum";
+//    }
+//
+//    @GetMapping("/selectCourse/{url}/{id}")
+//    public String selectCourse(@PathVariable String url, @PathVariable Integer id, Model model, HttpServletRequest request) {
+//        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+//        CourseSelectionEntity courseSelectionEntity = new CourseSelectionEntity();
+//        courseSelectionEntity.setCurriculumId(id);
+//        courseSelectionEntity.setStudentId(Integer.parseInt(student.getId()));
+//        curriculumServiceImpl.saveCourseSelection(courseSelectionEntity);
+//        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, student.getId());
+//        model.addAttribute("curriculumList", curriculumEntityList);
+//        return "redirect:/" + url;
+//    }
+//
+//    @GetMapping("/deleteCourse/{id}")
+//    public String deleteCourse(@PathVariable Integer id) {
+//        curriculumServiceImpl.deleteCourse(id.longValue());
+//        return "redirect:/studentSupport";
+//    }
+//
+//    @PostMapping("/insert/computerScience")
+//    public String insertComputerScience(CurriculumForm curriculumForm, Model model, HttpServletRequest request) {
+//        CurriculumEntity curriculumEntity = new CurriculumEntity();
+//        BeanUtils.copyProperties(curriculumForm, curriculumEntity);
+//        curriculumEntity.setSubject(ConstantUtils.COMPUTER_SCIENCE);
+//        ComputerScienceServiceImpl computerScienceService = new ComputerScienceServiceImpl(curriculumEntity, curriculumEntityRepository);
+//        CurriculumEntity curriculumEntityDB = curriculumServiceImpl.insertComputerScience(computerScienceService);
+//        TeacherCurriculumRelationEntity teacherCurriculumRelationEntity = new TeacherCurriculumRelationEntity();
+//        teacherCurriculumRelationEntity.setCurriculumId(curriculumEntityDB.getId().intValue());
+//        teacherCurriculumRelationEntity.setTeacherId(curriculumForm.getTeacherId());
+//        teacherCurriculumRelationEntityRepository.save(teacherCurriculumRelationEntity);
+//        model.addAttribute("teacherList", teacherEntityRepository.findAll());
+//        return "redirect:/studentSupport";
+//    }
+//
+//    @PostMapping("/insert/mathematics")
+//    public String insertMathematics(CurriculumForm curriculumForm, Model model, HttpServletRequest request) {
+//        CurriculumEntity curriculumEntity = new CurriculumEntity();
+//        BeanUtils.copyProperties(curriculumForm, curriculumEntity);
+//        curriculumEntity.setSubject(ConstantUtils.MATHEMATICS);
+//        MathematicsServiceImpl mathematicsService = new MathematicsServiceImpl(curriculumEntity, curriculumEntityRepository);
+//        ComputerScienceAdapterMathematics adapterMathematics = new ComputerScienceAdapterMathematics(mathematicsService);
+//        CurriculumEntity curriculumEntityDB = curriculumServiceImpl.insertComputerScience(adapterMathematics);
+//        TeacherCurriculumRelationEntity teacherCurriculumRelationEntity = new TeacherCurriculumRelationEntity();
+//        teacherCurriculumRelationEntity.setCurriculumId(curriculumEntityDB.getId().intValue());
+//        teacherCurriculumRelationEntity.setTeacherId(curriculumForm.getTeacherId());
+//        teacherCurriculumRelationEntityRepository.save(teacherCurriculumRelationEntity);
+//        model.addAttribute("teacherList", teacherEntityRepository.findAll());
+//        return "redirect:/studentSupport";
+//    }
 
     
 

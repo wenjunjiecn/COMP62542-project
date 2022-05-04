@@ -14,19 +14,22 @@
 <header class="cd-main-header text-center flex flex-column flex-center">
     <h1 class="text-xl"></h1>
 </header>
-<div class="card w-50 mx-auto p-5 margin-bottom-lg">
+<div class="card w-75 mx-auto p-5 margin-bottom-lg">
     <h2 class="m-2">Optional Courses</h2>
 <div class="table-responsive">
     <table class="table">
         <thead>
         <tr>
-            <th>Class_BEGIN
+            <th>Course Name
             </th>
-            <th>Lecturer
+            <th>Start Time
             </th>
-            <th>Class_END
+            <th>End Time
             </th>
-            <th>Class_DATE
+            <th>Day in Week
+            </th>
+            </th>
+            <th>Department
             </th>
             <th>Operation
             </th>
@@ -34,19 +37,20 @@
         </thead>
         <tbody>
         <tr th:each="curriculum : ${curriculumList}">
-            <td th:text="${curriculum.classStartTime}">Onions</td>
-            <td th:text="${curriculum.teacher}">Onions</td>
-            <td th:text="${curriculum.classEndTime}">Onions</td>
-            <td th:text="${curriculum.classDate}">Onions</td>
+            <td th:text="${curriculum.courseName}">Onions</td>
+            <td th:text="${curriculum.startTime}">Onions</td>
+            <td th:text="${curriculum.endTime}">Onions</td>
+            <td th:text="${curriculum.dayInWeek}">Onions</td>
+            <td th:text="${curriculum.department}">Onions</td>
 
             <td th:unless="${curriculum.selectFlag}">
-                <a href="#" th:href="'/selectCourse/' + ${url} +'/' + ${curriculum.id}"
+                <a href="#" th:href="'/add/' + ${curriculum.department} +'/' + ${curriculum.id}"
                    class="btn btn-primary btn-lg active"
-                   role="button">Select</a>
+                   role="button">Register</a>
             </td>
             <td th:if="${curriculum.selectFlag}">
-                <a href="#" class="btn btn-default btn-lg disabled"
-                   role="button">Selected</a>
+                <a href="#" th:href="'/remove/' + ${curriculum.department} +'/' + ${curriculum.id}" class="btn btn-danger btn-lg "
+                   role="button">Unregister</a>
             </td>
         </tr>
         </tbody>

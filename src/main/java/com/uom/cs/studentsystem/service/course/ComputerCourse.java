@@ -14,6 +14,10 @@ public class ComputerCourse implements ICourse{
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public void accept(Visitor visitor, Student student) {
         visitor.visit(this,student);

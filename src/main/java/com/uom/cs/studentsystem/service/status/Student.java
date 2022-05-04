@@ -1,7 +1,7 @@
 package com.uom.cs.studentsystem.service.status;
 
 import com.uom.cs.studentsystem.model.StudentEntity;
-import com.uom.cs.studentsystem.studentunion.ObserverOfStudentUnion;
+
 
 import java.io.Serializable;
 
