@@ -1,6 +1,9 @@
 package com.uom.cs.studentsystem.service.status;
 
 import com.uom.cs.studentsystem.model.StudentEntity;
+import org.hibernate.annotations.Comment;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 
 import java.io.Serializable;
@@ -10,6 +13,8 @@ import java.io.Serializable;
  * @version 1.0
  * Student Business Object used in Services level
  */
+@Component
+@Scope("prototype")
 public class Student implements Serializable {
     private static final long serialVersionUID = 6687929992161255473L;
     private String id;
@@ -46,5 +51,9 @@ public class Student implements Serializable {
 
     public Boolean hasTimeTablePermission() {
         return registerStatus.hasTimetablePermission();
+    }
+
+    public Boolean hasCourseListPermission(){
+        return registerStatus.hasCourseListOperationPermission();
     }
 }

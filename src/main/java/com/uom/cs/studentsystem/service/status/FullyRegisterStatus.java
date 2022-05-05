@@ -14,4 +14,9 @@ public class FullyRegisterStatus implements IRegisterStatus {
     public Boolean hasTimetablePermission() {
         return true;
     }
+
+    @Override
+    public Boolean hasCourseListOperationPermission() {
+        return true;
+    }
 }

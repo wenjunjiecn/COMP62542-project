@@ -23,7 +23,7 @@ public class WebConfigurer implements WebMvcConfigurer {
         // excludePathPatterns("/login", "/register") 表示除了登陆与注册之外，因为登陆注册不需要登陆也可以访问
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login", "/logout","/studentSupport", "/assets/**");
+                .excludePathPatterns("/login", "/logout","/studentSupport", "/assets/**","/studentsupport/**");
     }
 
     @Override

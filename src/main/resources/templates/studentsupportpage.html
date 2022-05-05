@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css} "/>
+</head>
+<div th:replace="studentsupportheader::header-body"></div>
+
+<body>
+<div class="card w-50 mx-auto p-5 margin-top-sm mt-3">
+    <h2 class="mb-1">View students' course lists</h2>
+    <div class="form-floating mt-5">
+        <input class="form-control" id="studentid" name="id" placeholder="123456" type="text">
+        <label for="studentid">Student id</label>
+    </div>
+    <button type="submit" onclick="doSubmitForm()" class="btn btn-primary mt-3">Query</button>
+</div>
+<script>
+    function doSubmitForm() {
+
+        var id=document.getElementById('studentid');
+        window.location.href="/studentsupport/query/"+id.value;
+    }
+</script>
+</body>
+</html>

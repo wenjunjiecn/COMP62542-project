@@ -1,81 +1,74 @@
 package com.uom.cs.studentsystem.controller;
 
-import com.uom.cs.studentsystem.model.CurriculumEntity;
-import com.uom.cs.studentsystem.repository.TeacherEntityRepository;
-import com.uom.cs.studentsystem.service.AuthService;
-import com.uom.cs.studentsystem.service.impl.CurriculumServiceImpl;
+
 import com.uom.cs.studentsystem.service.status.Student;
+import com.uom.cs.studentsystem.service.studentsupport.StudentSupport;
+import com.uom.cs.studentsystem.service.studentsupport.StudentSupportServices;
 import com.uom.cs.studentsystem.utils.ConstantUtils;
+import com.uom.cs.studentsystem.vo.CourseItemVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 /**
- * @author yixuan
+ * @author wenjunjie
  * @version 1.0
- * @date 2022/5/2 1:50
  */
 @Controller
 public class StudentSupportController {
     @Autowired
-    private AuthService authService;
+    StudentSupportServices studentSupportServices;
 
-    @Autowired
-    private TeacherEntityRepository teacherEntityRepository;
-
-
-    @Autowired
-    private CurriculumServiceImpl curriculumServiceImpl;
-
-
-    @GetMapping("/studentSupport")
-    public String getLoginPage(Model model, HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        if (student != null) {
-            List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, null);
-            model.addAttribute("curriculumList", curriculumEntityList);
-            return "studentSupport";
+    @GetMapping("/studentsupport")
+    public String getStudentSupportPage(Model model, HttpServletRequest request){
+        if(request.getSession().getAttribute(ConstantUtils.STUDENT_SUPPORT)==null){
+            StudentSupport studentSupport = new StudentSupport(null);
+            request.getSession().setAttribute(ConstantUtils.STUDENT_SUPPORT,studentSupport);
         }
-        return "studentSupportLogin";
+
+        return "studentsupportpage";
     }
 
-    @PostMapping("/studentSupport")
-    public String login(@RequestParam(value = "id") String id, Model model, HttpServletRequest request) {
-        Student student = authService.login(id);
-        if (student == null) {
-            model.addAttribute("error", "The id does not exist");
-            return "login";
-        }
-        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, null);
-        model.addAttribute("curriculumList", curriculumEntityList);
-        model.addAttribute("url", "computerScience");
-        request.getSession().setAttribute(ConstantUtils.USER_SESSION_KEY, student);
-        model.addAttribute("teacherList", teacherEntityRepository.findAll());
-        return "studentSupport";
+    @GetMapping("/studentsupport/query/{studentid}")
+    public String bindStudent(@PathVariable("studentid") String studentid, HttpServletRequest request, Model model){
+        StudentSupport studentSupport=(StudentSupport) request.getSession().getAttribute(ConstantUtils.STUDENT_SUPPORT);
+        Student student=studentSupportServices.createStudent(studentid);
+        studentSupport.setStudent(student);
+        request.getSession().setAttribute(ConstantUtils.STUDENT_SUPPORT,studentSupport);
+        List<CourseItemVO> courseList = studentSupportServices.getCourseList(student);
+
+        model.addAttribute("student",student);
+        model.addAttribute("curriculumList",courseList);
+        System.out.println(courseList);
+        return "studentsupportlist";
     }
 
-    @GetMapping("/studentSupport/computerScience")
-    public String computerScience(Model model, HttpServletRequest request) {
-        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.COMPUTER_SCIENCE, null);
-        model.addAttribute("curriculumList", curriculumEntityList);
-        model.addAttribute("url", "computerScience");
-        model.addAttribute("teacherList", teacherEntityRepository.findAll());
-        return "studentSupport";
+    @RequestMapping("/studentsupport/add/{courseid}")
+    public String addCourseForStudent(@PathVariable String courseid, HttpServletRequest request){
+        StudentSupport studentSupport=(StudentSupport) request.getSession().getAttribute(ConstantUtils.STUDENT_SUPPORT);
+        Student student = studentSupport.getStudent();
+        System.out.println("+++"+student);
+        studentSupportServices.addCourseForStudent(studentSupport,Long.parseLong(courseid));
+        return "redirect:/studentsupport/query/"+student.getId();
+    }
+
+    @RequestMapping("/studentsupport/remove/{courseid}")
+    public String removeCourseForStudent(@PathVariable String courseid, HttpServletRequest request){
+        StudentSupport studentSupport=(StudentSupport) request.getSession().getAttribute(ConstantUtils.STUDENT_SUPPORT);
+        Student student = studentSupport.getStudent();
+        System.out.println("+++"+student);
+        studentSupportServices.removeCourseForStudent(studentSupport,Long.parseLong(courseid));
+        return "redirect:/studentsupport/query/"+student.getId();
     }
 
 
-    @GetMapping("/studentSupport/mathematics")
-    public String mathematics(Model model, HttpServletRequest request) {
-        List<CurriculumEntity> curriculumEntityList = curriculumServiceImpl.queryCurriculumBySubject(ConstantUtils.MATHEMATICS, null);
-        model.addAttribute("curriculumList", curriculumEntityList);
-        model.addAttribute("url", "mathematics");
-        model.addAttribute("teacherList", teacherEntityRepository.findAll());
-        return "studentSupport";
-    }
 }
