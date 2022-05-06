@@ -219,7 +219,10 @@ public class StudentUnion implements Subject, Serializable {
                     messageRecordEntity.getIdNews(), messageRecordEntity.getNewsType(),
                     messageRecordEntity.getTitle(), messageRecordEntity.getContent(),
                     messageRecordEntity.getDate());
-            assert basicNewsletter != null;
+            //assert basicNewsletter != null;
+            if (basicNewsletter == null) {
+                continue;
+            }
             BasicNewsletter reformattedNewsletter = basicNewsletter.reformatNewsletter();
             basicNewsletterList.add(reformattedNewsletter);
         }

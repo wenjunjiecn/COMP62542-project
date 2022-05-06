@@ -1,9 +1,7 @@
-package com.uom.cs.studentsystem.controller;
-
+package com.uom.cs.studentsystem.studentadmissionoffice;
 
 import com.uom.cs.studentsystem.service.studentunion.newsletterTemplate.BasicNewsletter;
 import com.uom.cs.studentsystem.service.studentunion.newsletterTemplate.NewsletterFactory;
-import com.uom.cs.studentsystem.service.StudentUnionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,36 +10,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class MessageRecordController {
+public class StudentAdmissionOfficeController {
 
-    @Autowired
-    private StudentUnionService studentUnionService;
+    @Autowired StudentAdmissionOffice studentAdmissionOffice;
 
-    @GetMapping("/studentunion")
+    @GetMapping("/studentadmissionoffice")
     public String getAddNewsltterPage(HttpServletRequest request) {
-        return "studentunion";
+        return "studentadmissionoffice";
     }
 
-    @PostMapping("/studentunion/addNewsletter")
+    @PostMapping("/studentadmissionoffice/addReminder")
     public String addAdditionalActivity(HttpServletRequest request) {
         String id_news = request.getParameter("id_news");
         String news_type = request.getParameter("news_type");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         String date = request.getParameter("date");
-        BasicNewsletter basicNewsletter = NewsletterFactory.getNewsletter(id_news, news_type, title, content, date);
-                studentUnionService.createAndSaveNewsletter(basicNewsletter);
-        return "redirect:/studentunion";
+        //BasicNewsletter basicNewsletter = NewsletterFactory.getNewsletter(id_news, news_type, title, content, date);
+        //studentUnionService.createAndSaveNewsletter(basicNewsletter);
+        AdmissionOfficeReminder admissionOfficeReminder = new AdmissionOfficeReminder(id_news, news_type, title, content, date);
+        studentAdmissionOffice.saveReminderToDatabase(admissionOfficeReminder);
+        return "redirect:/studentadmissionoffice";
     }
 
-    @GetMapping("/studentunion/publishNewsletter")
+    @GetMapping("/studentadmissionoffice/publishReminder")
     public String getPublishNewsletterPage(HttpServletRequest request) {
-        return "redirect:/studentunion";
-    }
-
-    @PostMapping("/studentunion/publishNewsletter")
-    public String publishNewsletter(HttpServletRequest request) {
-       studentUnionService.notifyAllStudents();
-        return "redirect:/studentunion";
+        return "redirect:/studentadmissionoffice";
     }
 }
