@@ -1,13 +1,88 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>inboxMessage</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1 th:text="${message.title}"></h1>-->
+<!--    <p th:text="${message.content}"></p>-->
+<!--    <p th:text="${message.date}"></p>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>inboxMessage</title>
+    <meta charset="utf-8"/>
+
+    <title>Inbox Message</title>
+    <link th:href="@{/assets/bootstrap/css/bootstrap.min.css} " th:rel="stylesheet"/>
 </head>
 <body>
-    <h1 th:text="${message.title}"></h1>
-    <p th:text="${message.content}"></p>
-    <p th:text="${message.date}"></p>
+<div th:replace="header::header-body"></div>
+<!-- Page content-->
+<div class="container mt-5 mx-auto">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1" th:text="${message.title}">Title</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2" th:text="'Posted on '+${message.date}">date</div>
+                    <!-- Post categories-->
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!" th:text="${message.newsType}"></a>
+                </header>
+                <!-- Preview image figure-->
+                <figure class="mb-4"><img class="img-fluid rounded"
+                                          src="https://picsum.photos/900/400" alt="..."/></figure>
+                <!-- Post content-->
+                <section class="mb-5">
+                    <p class="fs-5 mb-4" th:text="${message.content}">Content</p>
 
+                </section>
+            </article>
+            <a href="#" class="previous" onclick="history.back()">&laquo; Back</a>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<!--<script src="js/scripts.js"></script>-->
+<script th:src="@{/assets/jquery/jquery.min.js}"></script>
+<script th:src="@{/assets/popper.js/popper.min.js}"></script>
+<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
 </body>
+<style>
+    a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+
+    a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .previous {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+
+</style>
 </html>
