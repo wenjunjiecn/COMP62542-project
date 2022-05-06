@@ -2,11 +2,9 @@ package com.uom.cs.studentsystem.service;
 
 import com.uom.cs.studentsystem.model.AdditionalActivityEntity;
 import com.uom.cs.studentsystem.model.CourseEntity;
-import com.uom.cs.studentsystem.model.CourseSelectionEntity;
 import com.uom.cs.studentsystem.model.CourseSelectionRecordEntity;
 import com.uom.cs.studentsystem.repository.AdditionalActivityEntityRepository;
 import com.uom.cs.studentsystem.repository.CourseEntityRepository;
-import com.uom.cs.studentsystem.repository.CourseSelectionEntityRepository;
 import com.uom.cs.studentsystem.repository.CourseSelectionRecordEntityRepository;
 import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.service.timetable.*;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author wenjunjie

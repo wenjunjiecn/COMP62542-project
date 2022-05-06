@@ -1,7 +1,6 @@
 package com.uom.cs.studentsystem.service.timetable;
 
 import com.uom.cs.studentsystem.model.CourseEntity;
-import com.uom.cs.studentsystem.model.CourseSelectionEntity;
 
 import java.util.LinkedList;
 import java.util.List;
