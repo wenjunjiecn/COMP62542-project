@@ -10,7 +10,7 @@ import java.util.List;
  * @author wenjunjie
  * @version 1.0
  */
-public class CourseSelection implements IActivity {
+public class SelectedCourse implements IActivity {
     private Long id;
     private String startTime;
     private String endTime;
@@ -19,14 +19,12 @@ public class CourseSelection implements IActivity {
     private String type = "course";
     private String studentid;
 
-    public CourseSelection(CourseSelectionEntity selectionEntity, CourseEntity courseEntity) {
-        this.id = selectionEntity.getId();
+    public SelectedCourse( CourseEntity courseEntity) {
+        this.id=courseEntity.getId();
         this.startTime = courseEntity.getStartTime();
         this.endTime = courseEntity.getEndTime();
         this.dayInWeek = courseEntity.getDayInWeek();
         this.message = courseEntity.getCourseName();
-//        this.studentid = selectionEntity.getStudentid();
-
     }
 
     @Override

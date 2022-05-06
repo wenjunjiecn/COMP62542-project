@@ -3,6 +3,7 @@ package com.uom.cs.studentsystem.controller;
 import com.uom.cs.studentsystem.service.TimetableService;
 import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.service.timetable.AdditionActivity;
+import com.uom.cs.studentsystem.service.timetable.BasicAdditionActivityBuilder;
 import com.uom.cs.studentsystem.service.timetable.TimetableItem;
 import com.uom.cs.studentsystem.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class StudentTimetableController {
         model.addAttribute("Thursday", timetableMapByDayInWeek.get(4));
         model.addAttribute("Friday", timetableMapByDayInWeek.get(5));
         model.addAttribute("Saturday", timetableMapByDayInWeek.get(6));
-        model.addAttribute("Sunday", timetableMapByDayInWeek.get(6));
+        model.addAttribute("Sunday", timetableMapByDayInWeek.get(7));
 //            System.out.println(timetableMapByDayInWeek);
         return "timetable";
     }
@@ -75,8 +76,14 @@ public class StudentTimetableController {
         String message = request.getParameter("message");
         Integer dayInWeek = Integer.parseInt(request.getParameter("dayInWeek"));
         String stuId = student.getId();
-        AdditionActivity activity = new AdditionActivity(startTime, endTime, dayInWeek, message, stuId);
-
+//        AdditionActivity activity = new AdditionActivity(startTime, endTime, dayInWeek, message, stuId);
+        AdditionActivity activity = new BasicAdditionActivityBuilder()
+                                        .setStartTime(startTime)
+                                        .setEndTime(endTime)
+                                        .setDayInWeek(dayInWeek)
+                                        .setMessage(message)
+                                        .setStudentid(stuId)
+                                        .build();
         timetableService.addAdditionalActivity(activity);
         return "redirect:/timetable";
     }

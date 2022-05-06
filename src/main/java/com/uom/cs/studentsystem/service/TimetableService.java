@@ -3,9 +3,11 @@ package com.uom.cs.studentsystem.service;
 import com.uom.cs.studentsystem.model.AdditionalActivityEntity;
 import com.uom.cs.studentsystem.model.CourseEntity;
 import com.uom.cs.studentsystem.model.CourseSelectionEntity;
+import com.uom.cs.studentsystem.model.CourseSelectionRecordEntity;
 import com.uom.cs.studentsystem.repository.AdditionalActivityEntityRepository;
 import com.uom.cs.studentsystem.repository.CourseEntityRepository;
 import com.uom.cs.studentsystem.repository.CourseSelectionEntityRepository;
+import com.uom.cs.studentsystem.repository.CourseSelectionRecordEntityRepository;
 import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.service.timetable.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author wenjunjie
@@ -23,7 +26,7 @@ public class TimetableService {
     @Autowired
     AdditionalActivityEntityRepository additionalActivityEntityRepository;
     @Autowired
-    CourseSelectionEntityRepository courseSelectionEntityRepository;
+    CourseSelectionRecordEntityRepository courseSelectionRecordEntityRepository;
     @Autowired
     CourseEntityRepository courseEntityRepository;
 
@@ -32,7 +35,7 @@ public class TimetableService {
         BasicTimetable basicTimetable = new BasicTimetable();
 
         List<AdditionalActivityEntity> additionActivities = additionalActivityEntityRepository.findByStudentid(id);
-//        List<CourseSelectionEntity> courseActivities = courseSelectionEntityRepository.findByStudentid(id);
+        List<CourseSelectionRecordEntity> courseActivities = courseSelectionRecordEntityRepository.findAllByStudentId(id);
 
         for (AdditionalActivityEntity activity : additionActivities) {
             AdditionActivity i = new AdditionActivity(activity);
@@ -44,6 +47,12 @@ public class TimetableService {
 //            CourseSelection i = new CourseSelection(courseActivity, courseEntity);
 //            basicTimetable.add(i);
 //        }
+
+        for (CourseSelectionRecordEntity courseActivity : courseActivities) {
+            CourseEntity courseEntity = courseEntityRepository.findById(courseActivity.getCourseId()).get();
+            SelectedCourse selectedCourse = new SelectedCourse(courseEntity);
+            basicTimetable.add(selectedCourse);
+        }
 
         Iterator iterator = basicTimetable.createIterator();
         List<TimetableItem> orderedList = new LinkedList<>();

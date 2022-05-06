@@ -16,6 +16,19 @@ public class AdditionActivity implements IActivity {
     private Integer dayInWeek;
     private String message;
     private String type = "additional";
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public Integer getDayInWeek() {
+        return dayInWeek;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
     private String studentid;
 
     public AdditionActivity(String startTime, String endTime, Integer dayInWeek, String message, String studentid) {
@@ -24,6 +37,9 @@ public class AdditionActivity implements IActivity {
         this.dayInWeek = dayInWeek;
         this.message = message;
         this.studentid = studentid;
+    }
+    public AdditionActivity(){
+
     }
 
     public AdditionActivity(AdditionalActivityEntity entity) {
@@ -58,5 +74,29 @@ public class AdditionActivity implements IActivity {
 
     public String getStudentid() {
         return studentid;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public void setDayInWeek(Integer dayInWeek) {
+        this.dayInWeek = dayInWeek;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setStudentid(String studentid) {
+        this.studentid = studentid;
+    }
+
+    public String getStartTime() {
+        return startTime;
     }
 }
