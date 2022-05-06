@@ -60,4 +60,6 @@ public class Student implements Serializable {
     public Boolean hasStudentUnionPermission() {
         return registerStatus.hasStudentUnionPermission();
     }
+
+
 }

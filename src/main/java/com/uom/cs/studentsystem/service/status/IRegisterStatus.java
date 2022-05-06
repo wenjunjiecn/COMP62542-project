@@ -20,4 +20,5 @@ public interface IRegisterStatus extends Serializable {
     default Boolean hasStudentUnionPermission() {
         return false;
     }
+
 }

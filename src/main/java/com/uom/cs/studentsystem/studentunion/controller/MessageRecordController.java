@@ -21,15 +21,15 @@ public class MessageRecordController {
 
     @GetMapping("/studentunion")
     public String getAddNewsltterPage(HttpServletRequest request) {
-        Student student = getStudent(request);
-        if (student == null) return "403";
+//        Student student = getStudent(request);
+//        if (student == null) return "403";
         return "addNewsletter";
     }
 
     @PostMapping("/addNewsletter")
     public String addAdditionalActivity(HttpServletRequest request) {
-        Student student = getStudent(request);
-        if (student == null) return "403";
+//        Student student = getStudent(request);
+//        if (student == null) return "403";
 //        String startTime = request.getParameter("startTime");
 //        String endTime = request.getParameter("endTime");
 //        String message = request.getParameter("message");
@@ -49,23 +49,23 @@ public class MessageRecordController {
 
     @GetMapping("/publishNewsletter")
     public String getPublishNewsletterPage(HttpServletRequest request) {
-        Student student = getStudent(request);
-        if (student == null) return "403";
+//        Student student = getStudent(request);
+//        if (student == null) return "403";
         return "/publishNewsletter";
     }
 
     @PostMapping("/publishNewsletter")
     public String publishNewsletter(HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+//        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         studentUnionService.notifyAllStudents();
         return "redirect:/publishNewsletter";
     }
 
-    private Student getStudent(HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        if (student == null || !student.hasTimeTablePermission()) {
-            return null;
-        }
-        return student;
-    }
+//    private Student getStudent(HttpServletRequest request) {
+//        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+//        if (student == null || !student.hasTimeTablePermission()) {
+//            return null;
+//        }
+//        return student;
+//    }
 }
