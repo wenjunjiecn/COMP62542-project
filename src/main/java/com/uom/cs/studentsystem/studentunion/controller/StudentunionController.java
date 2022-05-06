@@ -20,7 +20,7 @@ public class StudentunionController {
     private StudentUnionService studentUnionService;
 
 
-    @GetMapping("/studentunion")
+    @GetMapping("/subscribeCenter")
     public String getLoginPage(Model model, HttpServletRequest request) {
         Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         model.addAttribute("academic", studentUnionService.getSubscribeStatus(student.getId(), "academic"));
@@ -33,41 +33,41 @@ public class StudentunionController {
     public String subscribeAcademic( Model model, HttpServletRequest request) {
         Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         studentUnionService.subscribeNewsletter(student, "academic");
-        return "redirect:/studentunion";
+        return "redirect:/subscribeCenter";
     }
 
     @PostMapping("/studentunion/unsubscribeAcademic")
     public String unsubscribeAcademic(HttpServletRequest request) {
         Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         studentUnionService.unsubscribeNewsletter(student, "academic");
-        return "redirect:/studentunion";
+        return "redirect:/subscribeCenter";
     }
 
     @PostMapping("/studentunion/subscribeSports")
     public String subscribeSports( Model model, HttpServletRequest request) {
         Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         studentUnionService.subscribeNewsletter(student, "sports");
-        return "redirect:/studentunion";
+        return "redirect:/subscribeCenter";
     }
 
     @PostMapping("/studentunion/unsubscribeSports")
     public String unsubscribeSports(HttpServletRequest request) {
         Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         studentUnionService.unsubscribeNewsletter(student, "sports");
-        return "redirect:/studentunion";
+        return "redirect:/subscribeCenter";
     }
 
     @PostMapping("/studentunion/subscribeSocial")
     public String subscribeSocial( Model model, HttpServletRequest request) {
         Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         studentUnionService.subscribeNewsletter(student, "social");
-        return "redirect:/studentunion";
+        return "redirect:/subscribeCenter";
     }
 
     @PostMapping("/studentunion/unsubscribeSocial")
     public String unsubscribeSocial(HttpServletRequest request) {
         Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         studentUnionService.unsubscribeNewsletter(student, "social");
-        return "redirect:/studentunion";
+        return "redirect:/subscribeCenter";
     }
 }

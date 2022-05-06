@@ -19,7 +19,7 @@ public class MessageRecordController {
     @Autowired
     private StudentUnionService studentUnionService;
 
-    @GetMapping("/addNewsletter")
+    @GetMapping("/studentunion")
     public String getAddNewsltterPage(HttpServletRequest request) {
         Student student = getStudent(request);
         if (student == null) return "403";
@@ -44,7 +44,7 @@ public class MessageRecordController {
         BasicNewsletter basicNewsletter = NewsletterFactory.getNewsletter(id_news, news_type, title, content, date);
         //System.out.println(content);
         studentUnionService.createAndSaveNewsletter(basicNewsletter);
-        return "redirect:/addNewsletter";
+        return "redirect:/studentunion";
     }
 
     @GetMapping("/publishNewsletter")

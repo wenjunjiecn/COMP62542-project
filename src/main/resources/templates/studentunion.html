@@ -18,8 +18,8 @@
             <thead>
             <tr> <!-- 行 -->
                 <th>Newsletter</th>
-                <th>subscribe</th>
-                <th>unsubscribe</th> <!-- 列 -->
+                <th>subscribe status</th>
+                <th>operation</th> <!-- 列 -->
             </tr>
             </thead>
 
@@ -27,12 +27,13 @@
             <tbody>
             <tr>
                 <td>Academic</td>
-                <td>
+                <td><p th:text="${academic}"/></td>
+                <td th:if="${academic} eq 'unsubscribe'">
                     <form method="post" action="/studentunion/subscribeAcademic">
                         <button type="submit" class="btn btn-primary"> Subscribe</button>
                     </form>
                 </td>
-                <td>
+                <td th:if="${academic} eq 'subscribe'">
                     <form method="post" action="/studentunion/unsubscribeAcademic">
                         <button type="submit"  class="btn btn-primary"> Unsubscribe</button>
                     </form>
@@ -42,12 +43,13 @@
             <tbody>
             <tr>
                 <td>Sports</td>
-                <td>
+                <td><p th:text="${sports}"/></td>
+                <td th:if="${sports} eq 'unsubscribe'">
                     <form method="post" action="/studentunion/subscribeSports">
                         <button type="submit" class="btn btn-primary"> Subscribe</button>
                     </form>
                 </td>
-                <td>
+                <td th:if="${sports} eq 'subscribe'">
                     <form method="post" action="/studentunion/unsubscribeSports">
                         <button type="submit"  class="btn btn-primary"> Unsubscribe</button>
                     </form>
@@ -57,12 +59,13 @@
             <tbody>
             <tr>
                 <td>Social</td>
-                <td>
+                <td><p th:text="${social}"/></td>
+                <td th:if="${social} eq 'unsubscribe'">
                     <form method="post" action="/studentunion/subscribeSocial">
-                        <button type="submit"  class="btn btn-primary"> Subscribe</button>
+                        <button type="submit" class="btn btn-primary"> Subscribe</button>
                     </form>
                 </td>
-                <td>
+                <td th:if="${social} eq 'subscribe'">
                     <form method="post" action="/studentunion/unsubscribeSocial">
                         <button type="submit"  class="btn btn-primary"> Unsubscribe</button>
                     </form>
@@ -96,33 +99,33 @@
 <!--    </tbody>-->
 <!--</table>-->
 
-<div class="card w-50 mx-auto p-5 margin-bottom-lg">
-    <h2 class="m-2">Your subscription status</h2>
-    <div>
-        <table class="table m-2">
-            <thead>
-            <tr>
-                <th>Newsletter type</th>
-                <th>Subscription Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
+<!--<div class="card w-50 mx-auto p-5 margin-bottom-lg">-->
+<!--    <h2 class="m-2">Your subscription status</h2>-->
+<!--    <div>-->
+<!--        <table class="table m-2">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>Newsletter type</th>-->
+<!--                <th>Subscription Status</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr>-->
 
-                <td>Academic</td>
-                <td><p th:text="${academic}"/></td>
+<!--                <td>Academic</td>-->
+<!--                <td><p th:text="${academic}"/></td>-->
 
-            </tr>
-            <tr>
-                <td>Sport</td>
-                <td><p th:text="${sports}"/></td>
-            </tr>
-            <tr>
-                <td>Social</td>
-                <td><p th:text="${social}"/></td>
-            </tr>
-            </tbody>
-        </table>
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Sport</td>-->
+<!--                <td><p th:text="${sports}"/></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Social</td>-->
+<!--                <td><p th:text="${social}"/></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
     </div>
 
 </div>
