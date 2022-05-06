@@ -1,7 +1,5 @@
 package com.uom.cs.studentsystem.studentadmissionoffice;
 
-import com.uom.cs.studentsystem.service.studentunion.newsletterTemplate.BasicNewsletter;
-import com.uom.cs.studentsystem.service.studentunion.newsletterTemplate.NewsletterFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +13,7 @@ public class StudentAdmissionOfficeController {
     @Autowired StudentAdmissionOffice studentAdmissionOffice;
 
     @GetMapping("/studentadmissionoffice")
-    public String getAddNewsltterPage(HttpServletRequest request) {
+    public String getAddReminderPage(HttpServletRequest request) {
         return "studentadmissionoffice";
     }
 
@@ -34,7 +32,13 @@ public class StudentAdmissionOfficeController {
     }
 
     @GetMapping("/studentadmissionoffice/publishReminder")
-    public String getPublishNewsletterPage(HttpServletRequest request) {
+    public String getPublishReminderPage(HttpServletRequest request) {
+        return "redirect:/studentadmissionoffice";
+    }
+
+    @PostMapping("/studentadmissionoffice/publishReminder")
+    public String publishReminder(HttpServletRequest request) {
+        studentAdmissionOffice.notifyAllPendingStudents();
         return "redirect:/studentadmissionoffice";
     }
 }

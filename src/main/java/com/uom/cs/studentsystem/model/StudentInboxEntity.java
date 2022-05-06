@@ -47,6 +47,15 @@ public class StudentInboxEntity implements Serializable {
         this.date = basicNewsletter.getDate();
     }
 
+    public StudentInboxEntity(String studentId, MessageRecordEntity messageRecordEntity) {
+        this.studentId = studentId;
+        this.idNews = messageRecordEntity.getIdNews();
+        this.newsType = messageRecordEntity.getNewsType();
+        this.title = messageRecordEntity.getTitle();
+        this.content = messageRecordEntity.getContent();
+        this.date = messageRecordEntity.getDate();
+    }
+
     public String getStudentId() {
         return studentId;
     }
