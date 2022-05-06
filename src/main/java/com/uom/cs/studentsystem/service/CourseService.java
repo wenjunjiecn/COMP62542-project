@@ -8,7 +8,7 @@ import com.uom.cs.studentsystem.service.course.CourseFactory;
 import com.uom.cs.studentsystem.service.course.ICourse;
 import com.uom.cs.studentsystem.service.course.RemoveCourseVisitor;
 import com.uom.cs.studentsystem.service.status.Student;
-import com.uom.cs.studentsystem.vo.CourseItemVO;
+import com.uom.cs.studentsystem.service.course.CourseItemVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

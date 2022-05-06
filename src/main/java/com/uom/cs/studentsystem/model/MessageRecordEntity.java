@@ -1,22 +1,14 @@
-package com.uom.cs.studentsystem.inbox.model;
-
-import com.uom.cs.studentsystem.service.studentunion.newsletterTemplate.BasicNewsletter;
+package com.uom.cs.studentsystem.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import java.io.Serializable;
 
 @Entity
-@IdClass(StudentInboxEntity.class)
-public class StudentInboxEntity implements Serializable {
+public class MessageRecordEntity implements Serializable {
 
     private static final long serialVersionUID = 6687929992161255473L;
-
-    @Id
-    @Column(name = "studentId", nullable = false)
-    private String studentId;
 
     @Id
     @Column(name = "idNews", nullable = false)
@@ -34,25 +26,8 @@ public class StudentInboxEntity implements Serializable {
 
     private String date;
 
-    public StudentInboxEntity() {
+    public MessageRecordEntity() {
 
-    }
-
-    public StudentInboxEntity(String studentId, BasicNewsletter basicNewsletter) {
-        this.studentId = studentId;
-        this.idNews = basicNewsletter.getId_news();
-        this.newsType = basicNewsletter.getNews_type();
-        this.title = basicNewsletter.getTitle();
-        this.content = basicNewsletter.getContent();
-        this.date = basicNewsletter.getDate();
-    }
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
     }
 
     public String getIdNews() {
@@ -96,3 +71,11 @@ public class StudentInboxEntity implements Serializable {
     }
 }
 
+//    create table newsLetterBase(
+//    idNews varchar(255) primary key,
+//    idStudent varchar(255),
+//    nameStudent varchar(255),
+//    title varchar(255),
+//    content varchar(255),
+//    date varchar(255)
+//);
