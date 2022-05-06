@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Uom Student System</title>
+
+    <link th:href="@{/assets/bootstrap/css/bootstrap.min.css} " th:rel="stylesheet"/>
+    <link th:href="@{/assets/css/form.css} " th:rel="stylesheet"/>
+</head>
+<body>
+
+<div th:replace="header::header-body"></div>
+<div class="container px-5 my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 rounded-3 shadow-lg">
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <div class="h1 fw-light">Add new newsLetter</div>
+                        <p class="mb-4 text-muted">You can create your newsletter.</p>
+                    </div>
+
+
+                    <form method="post" th:action="@{/addNewsletter}">
+
+                        <!-- NEWS_TYPE-->
+
+                        <div class="form-floating">
+                            <select aria-label="Floating label select example" class="form-select" id="news_type"
+                                    name="news_type" required>
+                                <option style='display: none'></option>
+                                <option value="academic">Academic</option>
+                                <option value="sports">Sports</option>
+                                <option value="social">Social</option>
+                            </select>
+                            <label for="news_type">Type in Newsletter</label>
+                        </div>
+
+                        <!-- Title-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="id_news" name="id_news" placeholder="Content" required
+                                   type="text"></input>
+                            <label for="id_news">ID of newsletter</label>
+                        </div>
+
+                        <!-- Title-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="title" name="title" placeholder="Content" required
+                                      type="text"></input>
+                            <label for="title">Title</label>
+                        </div>
+
+                        <!-- Date-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="date" name="date" placeholder="Date" required
+                                      type="date"></input>
+                            <label for="content">Date</label>
+                        </div>
+
+                        <!-- Content-->
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="content" name="content" placeholder="Content" required
+                                      style="height: 10rem;" type="text"></textarea>
+                            <label for="date">Content</label>
+                        </div>
+
+
+                        <!-- Message Input -->
+
+
+                        <!-- Submit button -->
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg " type="submit">Submit</button>
+                        </div>
+
+                    </form>
+                    <!-- End of contact form -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{/assets/jquery/jquery.min.js}"></script>
+<script th:src="@{/assets/popper.js/popper.min.js}"></script>
+<script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+
+
+</body>
+</html>
