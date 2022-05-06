@@ -19,4 +19,9 @@ public class FullyRegisterStatus implements IRegisterStatus {
     public Boolean hasCourseListOperationPermission() {
         return true;
     }
+
+    @Override
+    public Boolean hasStudentUnionPermission() {
+        return true;
+    }
 }

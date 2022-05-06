@@ -16,4 +16,8 @@ public interface IRegisterStatus extends Serializable {
     default Boolean hasCourseListOperationPermission(){
         return false;
     }
+
+    default Boolean hasStudentUnionPermission() {
+        return false;
+    }
 }
