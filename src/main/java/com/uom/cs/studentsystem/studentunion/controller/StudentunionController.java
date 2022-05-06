@@ -27,10 +27,10 @@ public class StudentunionController {
         model.addAttribute("academic", studentUnionService.getSubscribeStatus(student.getId(), "academic"));
         model.addAttribute("sports", studentUnionService.getSubscribeStatus(student.getId(), "sports"));
         model.addAttribute("social", studentUnionService.getSubscribeStatus(student.getId(), "social"));
-        return "studentunion";
+        return "subscribeCenter";
     }
 
-    @PostMapping("/studentunion/subscribeAcademic")
+    @PostMapping("/subscribeCenter/subscribeAcademic")
     public String subscribeAcademic( Model model, HttpServletRequest request) {
         Student student = getStudent(request);
         if (student == null) return "403";
@@ -38,7 +38,7 @@ public class StudentunionController {
         return "redirect:/subscribeCenter";
     }
 
-    @PostMapping("/studentunion/unsubscribeAcademic")
+    @PostMapping("/subscribeCenter/unsubscribeAcademic")
     public String unsubscribeAcademic(HttpServletRequest request) {
         Student student = getStudent(request);
         if (student == null) return "403";
@@ -46,7 +46,7 @@ public class StudentunionController {
         return "redirect:/subscribeCenter";
     }
 
-    @PostMapping("/studentunion/subscribeSports")
+    @PostMapping("/subscribeCenter/subscribeSports")
     public String subscribeSports( Model model, HttpServletRequest request) {
         Student student = getStudent(request);
         if (student == null) return "403";
@@ -54,14 +54,14 @@ public class StudentunionController {
         return "redirect:/subscribeCenter";
     }
 
-    @PostMapping("/studentunion/unsubscribeSports")
+    @PostMapping("/subscribeCenter/unsubscribeSports")
     public String unsubscribeSports(HttpServletRequest request) {
         Student student = getStudent(request);
         studentUnionService.unsubscribeNewsletter(student, "sports");
         return "redirect:/subscribeCenter";
     }
 
-    @PostMapping("/studentunion/subscribeSocial")
+    @PostMapping("/subscribeCenter/subscribeSocial")
     public String subscribeSocial( Model model, HttpServletRequest request) {
         Student student = getStudent(request);
         if (student == null) return "403";
@@ -69,7 +69,7 @@ public class StudentunionController {
         return "redirect:/subscribeCenter";
     }
 
-    @PostMapping("/studentunion/unsubscribeSocial")
+    @PostMapping("/subscribeCenter/unsubscribeSocial")
     public String unsubscribeSocial(HttpServletRequest request) {
         Student student = getStudent(request);
         if (student == null) return "403";

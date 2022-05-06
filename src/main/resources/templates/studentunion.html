@@ -1,91 +1,113 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Subscribe Center(Provided by Student Union)</title>
+    <meta charset="UTF-8"/>
+    <title>Uom Student System</title>
+
     <link th:href="@{/assets/bootstrap/css/bootstrap.min.css} " th:rel="stylesheet"/>
+    <link th:href="@{/assets/css/form.css} " th:rel="stylesheet"/>
 </head>
 <body>
-<div th:replace="header::header-body"></div>
-<div class="w-50 mx-auto" style="margin-top: 5em">
-    <h1>Welcome to the Student Union Subscription Centre</h1>
-</div>
-<div class="card w-50 mx-auto p-5 margin-top-sm">
-    <h2 class="m-2">Subscribe Newsletter by Topic</h2>
-    <div class="m-2">
-        <table class="table"> <!-- border="1" 显示边框  -->
-            <!-- 表格头部 -->
-            <thead>
-            <tr> <!-- 行 -->
-                <th>Newsletter</th>
-                <th>Subscribe Status</th>
-                <th>Operation</th> <!-- 列 -->
-            </tr>
-            </thead>
+<!--HEADER NAV BAR-->
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/studentunion" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"/>
+                </svg>
+                <h2>Student Support</h2>
+            </a>
 
-            <!-- 表格主体 -->
-            <tbody>
-            <tr>
-                <td>Academic</td>
-                <td><p th:text="${academic}"/></td>
-                <td th:if="${academic} eq 'unsubscribe'">
-                    <form method="post" action="/studentunion/subscribeAcademic">
-                        <button type="submit" class="btn btn-primary fixbutton"> Subscribe</button>
-                    </form>
-                </td>
-                <td th:if="${academic} eq 'subscribe'">
-                    <form method="post" action="/studentunion/unsubscribeAcademic">
-                        <button type="submit" class="btn btn-danger fixbutton"> Unsubscribe</button>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-            <tbody>
-            <tr>
-                <td>Sports</td>
-                <td><p th:text="${sports}"/></td>
-                <td th:if="${sports} eq 'unsubscribe'">
-                    <form method="post" action="/studentunion/subscribeSports">
-                        <button type="submit" class="btn btn-primary fixbutton"> Subscribe</button>
-                    </form>
-                </td>
-                <td th:if="${sports} eq 'subscribe'">
-                    <form method="post" action="/studentunion/unsubscribeSports">
-                        <button type="submit" class="btn btn-danger fixbutton"> Unsubscribe</button>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-            <tbody>
-            <tr>
-                <td>Social</td>
-                <td><p th:text="${social}"/></td>
-                <td th:if="${social} eq 'unsubscribe'">
-                    <form method="post" action="/studentunion/subscribeSocial">
-                        <button type="submit" class="btn btn-primary fixbutton"> Subscribe</button>
-                    </form>
-                </td>
-                <td th:if="${social} eq 'subscribe'">
-                    <form method="post" action="/studentunion/unsubscribeSocial">
-                        <button type="submit" class="btn btn-danger fixbutton"> Unsubscribe</button>
-                    </form>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            </ul>
+            <div class="text-end">
+                <form method="post" action="/studentunion/publishNewsletter">
+                    <button type="submit"  class="btn btn-primary"> Notify All Subscriber</button>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
+</header>
+<!--MAIN PAGE-->
+<div class="container px-5 my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 rounded-3 shadow-lg">
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <div class="h1 fw-light">Add new newsLetter</div>
+                        <p class="mb-4 text-muted">You can create your newsletter.</p>
+                    </div>
+
+
+                    <form method="post" th:action="@{/studentunion/addNewsletter}">
+
+                        <!-- NEWS_TYPE-->
+
+                        <div class="form-floating">
+                            <select aria-label="Floating label select example" class="form-select" id="news_type"
+                                    name="news_type" required>
+                                <option style='display: none'></option>
+                                <option value="academic">Academic</option>
+                                <option value="sports">Sports</option>
+                                <option value="social">Social</option>
+                            </select>
+                            <label for="news_type">Type in Newsletter</label>
+                        </div>
+
+                        <!-- Title-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="id_news" name="id_news" placeholder="Content" required
+                                   type="text"></input>
+                            <label for="id_news">ID of newsletter</label>
+                        </div>
+
+                        <!-- Title-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="title" name="title" placeholder="Content" required
+                                      type="text"></input>
+                            <label for="title">Title</label>
+                        </div>
+
+                        <!-- Date-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="date" name="date" placeholder="Date" required
+                                      type="date"></input>
+                            <label for="content">Date</label>
+                        </div>
+
+                        <!-- Content-->
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="content" name="content" placeholder="Content" required
+                                      style="height: 10rem;" type="text"></textarea>
+                            <label for="date">Content</label>
+                        </div>
+
+
+                        <!-- Message Input -->
+
+
+                        <!-- Submit button -->
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg " type="submit">Submit</button>
+                        </div>
+
+                    </form>
+                    <!-- End of contact form -->
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
-</div>
+
 <script th:src="@{/assets/jquery/jquery.min.js}"></script>
 <script th:src="@{/assets/popper.js/popper.min.js}"></script>
 <script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+
+
 </body>
-<style>
-    .fixbutton{
-        width: 8em !important;
-    }
-</style>
 </html>

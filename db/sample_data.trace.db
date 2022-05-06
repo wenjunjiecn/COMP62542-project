@@ -14762,3 +14762,9 @@ Caused by: java.nio.channels.OverlappingFileLockException
 	at java.base/java.nio.channels.FileChannel.tryLock(FileChannel.java:1178)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	... 28 more
+2022-05-06 22:49:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "CONTENT VARCHAR(255)": "'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ... (445)"; SQL statement:
+insert into message_record_entity (content, date, news_type, title, id_news) values (?, ?, ?, ?, ?) [22001-200]
+2022-05-06 22:50:38 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "CONTENT VARCHAR(255)": "'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ... (445)"; SQL statement:
+insert into message_record_entity (content, date, news_type, title, id_news) values (?, ?, ?, ?, ?) [22001-200]

@@ -21,51 +21,31 @@ public class MessageRecordController {
 
     @GetMapping("/studentunion")
     public String getAddNewsltterPage(HttpServletRequest request) {
-//        Student student = getStudent(request);
-//        if (student == null) return "403";
-        return "addNewsletter";
+        return "studentunion";
     }
 
-    @PostMapping("/addNewsletter")
+    @PostMapping("/studentunion/addNewsletter")
     public String addAdditionalActivity(HttpServletRequest request) {
-//        Student student = getStudent(request);
-//        if (student == null) return "403";
-//        String startTime = request.getParameter("startTime");
-//        String endTime = request.getParameter("endTime");
-//        String message = request.getParameter("message");
-//        Integer dayInWeek = Integer.parseInt(request.getParameter("dayInWeek"));
-//        String stuId = student.getId();
-//        AdditionActivity activity = new AdditionActivity(startTime, endTime, dayInWeek, message, stuId);
         String id_news = request.getParameter("id_news");
         String news_type = request.getParameter("news_type");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         String date = request.getParameter("date");
         BasicNewsletter basicNewsletter = NewsletterFactory.getNewsletter(id_news, news_type, title, content, date);
-        //System.out.println(content);
-        studentUnionService.createAndSaveNewsletter(basicNewsletter);
+                studentUnionService.createAndSaveNewsletter(basicNewsletter);
         return "redirect:/studentunion";
     }
 
-    @GetMapping("/publishNewsletter")
+    @GetMapping("/studentunion/publishNewsletter")
     public String getPublishNewsletterPage(HttpServletRequest request) {
-//        Student student = getStudent(request);
-//        if (student == null) return "403";
-        return "/publishNewsletter";
-    }
-
-    @PostMapping("/publishNewsletter")
-    public String publishNewsletter(HttpServletRequest request) {
-//        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        studentUnionService.notifyAllStudents();
         return "redirect:/studentunion";
     }
 
-//    private Student getStudent(HttpServletRequest request) {
-//        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-//        if (student == null || !student.hasTimeTablePermission()) {
-//            return null;
-//        }
-//        return student;
-//    }
+    @PostMapping("/studentunion/publishNewsletter")
+    public String publishNewsletter(HttpServletRequest request) {
+       studentUnionService.notifyAllStudents();
+        return "redirect:/studentunion";
+    }
+
+
 }
