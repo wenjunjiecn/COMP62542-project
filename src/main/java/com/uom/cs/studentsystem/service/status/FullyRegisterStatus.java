@@ -24,4 +24,9 @@ public class FullyRegisterStatus implements IRegisterStatus {
     public Boolean hasStudentUnionPermission() {
         return true;
     }
+
+    @Override
+    public Boolean hasInboxPermission() {
+        return true;
+    }
 }

@@ -9,4 +9,9 @@ public class PendingRegisterStatus implements IRegisterStatus {
     public String checkStatus() {
         return "Pending";
     }
+
+    @Override
+    public Boolean hasInboxPermission() {
+        return true;
+    }
 }

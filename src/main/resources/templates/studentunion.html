@@ -18,8 +18,8 @@
             <thead>
             <tr> <!-- 行 -->
                 <th>Newsletter</th>
-                <th>subscribe status</th>
-                <th>operation</th> <!-- 列 -->
+                <th>Subscribe Status</th>
+                <th>Operation</th> <!-- 列 -->
             </tr>
             </thead>
 
@@ -30,12 +30,12 @@
                 <td><p th:text="${academic}"/></td>
                 <td th:if="${academic} eq 'unsubscribe'">
                     <form method="post" action="/studentunion/subscribeAcademic">
-                        <button type="submit" class="btn btn-primary"> Subscribe</button>
+                        <button type="submit" class="btn btn-primary fixbutton"> Subscribe</button>
                     </form>
                 </td>
                 <td th:if="${academic} eq 'subscribe'">
                     <form method="post" action="/studentunion/unsubscribeAcademic">
-                        <button type="submit" class="btn btn-primary"> Unsubscribe</button>
+                        <button type="submit" class="btn btn-danger fixbutton"> Unsubscribe</button>
                     </form>
                 </td>
             </tr>
@@ -46,12 +46,12 @@
                 <td><p th:text="${sports}"/></td>
                 <td th:if="${sports} eq 'unsubscribe'">
                     <form method="post" action="/studentunion/subscribeSports">
-                        <button type="submit" class="btn btn-primary"> Subscribe</button>
+                        <button type="submit" class="btn btn-primary fixbutton"> Subscribe</button>
                     </form>
                 </td>
                 <td th:if="${sports} eq 'subscribe'">
                     <form method="post" action="/studentunion/unsubscribeSports">
-                        <button type="submit" class="btn btn-primary"> Unsubscribe</button>
+                        <button type="submit" class="btn btn-danger fixbutton"> Unsubscribe</button>
                     </form>
                 </td>
             </tr>
@@ -62,12 +62,12 @@
                 <td><p th:text="${social}"/></td>
                 <td th:if="${social} eq 'unsubscribe'">
                     <form method="post" action="/studentunion/subscribeSocial">
-                        <button type="submit" class="btn btn-primary"> Subscribe</button>
+                        <button type="submit" class="btn btn-primary fixbutton"> Subscribe</button>
                     </form>
                 </td>
                 <td th:if="${social} eq 'subscribe'">
                     <form method="post" action="/studentunion/unsubscribeSocial">
-                        <button type="submit" class="btn btn-primary"> Unsubscribe</button>
+                        <button type="submit" class="btn btn-danger fixbutton"> Unsubscribe</button>
                     </form>
                 </td>
             </tr>
@@ -84,7 +84,7 @@
 <script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 <style>
-    button{
+    .fixbutton{
         width: 8em !important;
     }
 </style>

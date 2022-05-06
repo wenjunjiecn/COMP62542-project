@@ -41,7 +41,7 @@ public class InboxController {
 
     private Student getStudent(HttpServletRequest request) {
         Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
-        if (student == null || !student.hasTimeTablePermission()) {
+        if (student == null || !student.hasInboxPermission()) {
             return null;
         }
         return student;

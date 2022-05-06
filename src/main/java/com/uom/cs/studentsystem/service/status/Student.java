@@ -61,5 +61,9 @@ public class Student implements Serializable {
         return registerStatus.hasStudentUnionPermission();
     }
 
+    public Boolean hasInboxPermission(){
+        return registerStatus.hasInboxPermission();
+    }
+
 
 }

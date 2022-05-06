@@ -50,4 +50,9 @@ public class AuthController {
     public String getMessageCenter(HttpServletRequest request){
         return "messagecenter";
     }
+
+    @GetMapping("/landing")
+    public String getLandingPage(){
+        return "landing";
+    }
 }

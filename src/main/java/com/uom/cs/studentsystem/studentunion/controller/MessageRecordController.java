@@ -58,7 +58,7 @@ public class MessageRecordController {
     public String publishNewsletter(HttpServletRequest request) {
 //        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         studentUnionService.notifyAllStudents();
-        return "redirect:/publishNewsletter";
+        return "redirect:/studentunion";
     }
 
 //    private Student getStudent(HttpServletRequest request) {
