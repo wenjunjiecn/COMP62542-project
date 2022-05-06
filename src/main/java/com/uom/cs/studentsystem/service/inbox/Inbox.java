@@ -1,7 +1,7 @@
-package com.uom.cs.studentsystem.inbox;
+package com.uom.cs.studentsystem.service.inbox;
 
-import com.uom.cs.studentsystem.inbox.model.StudentInboxEntity;
-import com.uom.cs.studentsystem.inbox.repository.StudentInboxEntityRepository;
+import com.uom.cs.studentsystem.model.StudentInboxEntity;
+import com.uom.cs.studentsystem.repository.StudentInboxEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

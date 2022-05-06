@@ -1,8 +1,8 @@
 package com.uom.cs.studentsystem.service.studentunion;
 
 
-import com.uom.cs.studentsystem.inbox.model.StudentInboxEntity;
-import com.uom.cs.studentsystem.inbox.repository.StudentInboxEntityRepository;
+import com.uom.cs.studentsystem.model.StudentInboxEntity;
+import com.uom.cs.studentsystem.repository.StudentInboxEntityRepository;
 import com.uom.cs.studentsystem.model.AcademicNewsletterEntity;
 import com.uom.cs.studentsystem.model.MessageRecordEntity;
 import com.uom.cs.studentsystem.model.SocialNewsletterEntity;

@@ -1,4 +1,4 @@
-package com.uom.cs.studentsystem.inbox.model;
+package com.uom.cs.studentsystem.model;
 
 import com.uom.cs.studentsystem.service.studentunion.newsletterTemplate.BasicNewsletter;
 

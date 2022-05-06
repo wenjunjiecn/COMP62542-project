@@ -1,7 +1,7 @@
-package com.uom.cs.studentsystem.inbox.controller;
+package com.uom.cs.studentsystem.controller;
 
-import com.uom.cs.studentsystem.inbox.model.StudentInboxEntity;
-import com.uom.cs.studentsystem.inbox.service.InboxService;
+import com.uom.cs.studentsystem.model.StudentInboxEntity;
+import com.uom.cs.studentsystem.service.InboxService;
 import com.uom.cs.studentsystem.service.status.Student;
 import com.uom.cs.studentsystem.utils.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
