@@ -56,4 +56,8 @@ public class Student implements Serializable {
     public Boolean hasCourseListPermission(){
         return registerStatus.hasCourseListOperationPermission();
     }
+
+    public Boolean hasStudentUnionPermission() {
+        return registerStatus.hasStudentUnionPermission();
+    }
 }

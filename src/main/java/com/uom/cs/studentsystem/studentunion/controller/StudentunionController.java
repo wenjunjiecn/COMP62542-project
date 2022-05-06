@@ -22,7 +22,8 @@ public class StudentunionController {
 
     @GetMapping("/subscribeCenter")
     public String getLoginPage(Model model, HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        Student student = getStudent(request);
+        if (student == null) return "403";
         model.addAttribute("academic", studentUnionService.getSubscribeStatus(student.getId(), "academic"));
         model.addAttribute("sports", studentUnionService.getSubscribeStatus(student.getId(), "sports"));
         model.addAttribute("social", studentUnionService.getSubscribeStatus(student.getId(), "social"));
@@ -31,43 +32,56 @@ public class StudentunionController {
 
     @PostMapping("/studentunion/subscribeAcademic")
     public String subscribeAcademic( Model model, HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        Student student = getStudent(request);
+        if (student == null) return "403";
         studentUnionService.subscribeNewsletter(student, "academic");
         return "redirect:/subscribeCenter";
     }
 
     @PostMapping("/studentunion/unsubscribeAcademic")
     public String unsubscribeAcademic(HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        Student student = getStudent(request);
+        if (student == null) return "403";
         studentUnionService.unsubscribeNewsletter(student, "academic");
         return "redirect:/subscribeCenter";
     }
 
     @PostMapping("/studentunion/subscribeSports")
     public String subscribeSports( Model model, HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        Student student = getStudent(request);
+        if (student == null) return "403";
         studentUnionService.subscribeNewsletter(student, "sports");
         return "redirect:/subscribeCenter";
     }
 
     @PostMapping("/studentunion/unsubscribeSports")
     public String unsubscribeSports(HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        Student student = getStudent(request);
         studentUnionService.unsubscribeNewsletter(student, "sports");
         return "redirect:/subscribeCenter";
     }
 
     @PostMapping("/studentunion/subscribeSocial")
     public String subscribeSocial( Model model, HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        Student student = getStudent(request);
+        if (student == null) return "403";
         studentUnionService.subscribeNewsletter(student, "social");
         return "redirect:/subscribeCenter";
     }
 
     @PostMapping("/studentunion/unsubscribeSocial")
     public String unsubscribeSocial(HttpServletRequest request) {
-        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        Student student = getStudent(request);
+        if (student == null) return "403";
         studentUnionService.unsubscribeNewsletter(student, "social");
         return "redirect:/subscribeCenter";
+    }
+
+    private Student getStudent(HttpServletRequest request) {
+        Student student = (Student) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        if (student == null || !student.hasStudentUnionPermission()) {
+            return null;
+        }
+        return student;
     }
 }
