@@ -45,11 +45,11 @@
 
         <td th:unless="${curriculum.selectFlag}">
           <a href="#" th:href="'/studentsupport/add/'  + ${curriculum.id}"
-             class="btn btn-primary btn-lg active"
+             class="btn btn-primary btn-lg active fixbutton"
              role="button">Register</a>
         </td>
         <td th:if="${curriculum.selectFlag}">
-          <a href="#" th:href="'/studentsupport/remove/'  + ${curriculum.id}" class="btn btn-danger btn-lg "
+          <a href="#" th:href="'/studentsupport/remove/'  + ${curriculum.id}" class="btn btn-danger btn-lg fixbutton"
              role="button">Unregister</a>
         </td>
       </tr>
@@ -66,4 +66,9 @@
     <script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
+<style>
+  .fixbutton{
+    width: 8em !important;
+  }
+</style>
 </html>
