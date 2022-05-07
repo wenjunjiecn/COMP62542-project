@@ -1,0 +1,20 @@
+0001
+Hello, everybody.
+Thanks for subscribing Academic Newsletter!
+2022-05-02
+academic
+Academic Newsletter Title1
+
+0003
+HAHAHA
+Welcome to the social union!
+2022-05-01
+social
+Social Newsletter Title
+
+0002
+GoGoGo
+Welcome to sports union!
+2022-05-05
+sports
+Sports Newsletter Title

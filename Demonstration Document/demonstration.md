@@ -2,7 +2,7 @@
 
 The link to Home page of the system is: http://localhost:8080/landing
 
-<img src="E:\曼大学习\2nd Semester\COMP62542 Pattern-Based Software Development 2021-22 2nd Semester\Demonstration Document\landing page.png" style="zoom:50%;" />
+<img src=".\landing page.png" style="zoom:50%;" />
 
 - Student System
 
@@ -40,6 +40,8 @@ The link to Home page of the system is: http://localhost:8080/landing
 
   
 
+<div STYLE="page-break-after: always;"></div>
+
 ## Login to the student system
 
 Methods to visit login page:
@@ -60,4 +62,102 @@ In the student system, we have three users with different registration status:
 After the student logging into the system successfully, the student will see the following page:
 
 <img src=".\homePageForStudentSystem.png" style="zoom:50%;" />
+
+<div STYLE="page-break-after: always;"></div>
+
+## Timetable for students
+
+Remind: please login with the Student ID $11111$ continue this part.
+
+Click the button <u>Timetable</u> at the top of the page to view the timetable.
+
+<img src=".\timetableOverview.png" style="zoom:50%;" />
+
+Click the blue button <u>Add Activity</u> to add additional activities.
+
+<img src=".\timetableAddActivity.png" style="zoom:50%;" />
+
+Student can delete an activity by first clicking the activity on timetable, and then clicking the delete button.
+
+<img src=".\timetableDeleteActivity.png" style="zoom:50%;" />
+
+## Choose or opt-out optional courses
+
+Click the button <u>Optional Course</u> at the top of the page to view the optional course unit.
+
+<img src=".\timetableChooseOptionalCourses.png" style="zoom:50%;" />
+
+Student can choose or opt-out a course by clicking the button.
+
+## Subscribe or unsubscribe newsletter
+
+Click the button <u>Subscribe Center</u> at the top of the page to view the subscribe center.
+
+<img src=".\subscribeCenter.png" style="zoom:50%;" />
+
+In the student system, students can subscribe up to three types of newsletters published by the Student Union.
+
+Students can view their subscribe status on the second column, and change their subscribe status by clicking the button <u>Subscribe</u> or <u>Unsubscribe</u> on the third column.
+
+## Create and publish newsletters in Student Union
+
+Click the <u>Student Union</u> at Home Page(http://localhost:8080/landing) to get into the Student Union.
+
+The Student Union can create different types of newsletters, including \"Academic\", \"Sports\", and \"Social\".
+
+<img src=".\StudentUnionAddContent.png" style="zoom:50%;" />
+
+To submit the newsletter to the database, the student union needs to click the button <u>Submit</u>.
+
+To publish the newsletters to the student who subscribe them, the student union can click the button \"Notify All Subscriber\".
+
+## Notification Center for newsletters and daily reminder
+
+Click the button <u>Notification Center</u> at the top of the page to view the notification center.
+
+In the notification center, students can read the newsletters published by the Student Union.
+
+<img src=".\notificationCenterForNewsletterAndDailyReminder.png" style="zoom:50%;" />
+
+To view the content of the message, the student can click the button <u>Open</u>.
+
+<img src=".\contentOfMessage.png" style="zoom:50%;" />
+
+## Student Support Office adds or removes courses
+
+Click the <u>Student Support Office</u> at Home Page(http://localhost:8080/landing) to get into the Student Union.
+
+<img src=".\StudentSupport.png" style="zoom:50%;" />
+
+The student support office can add or remove some courses from student's course list by clicking the button.
+
+<div STYLE="page-break-after: always;"></div>
+
+## Student Admission Office sends daily reminder
+
+Click the <u>Student Support Office</u> at Home Page(http://localhost:8080/landing) to get into the Student Union.
+
+<img src=".\createDailyReminder.png" style="zoom:50%;" />
+
+The Student Support Office can write daily reminder in this page.
+
+To submit the daily reminder to the database, the student union needs to click the button <u>Submit</u>.
+
+To send the daily reminder to the pending students, the Student Support Office can click the button \"Notify All Pending Student\".
+
+## Check the daily reminder
+
+To check the daily reminder, you need to login the account of a pending student. In our database, the student with ID $33333$​ is pending for registration.
+
+Therefore, you need to click the button <u>Logout</u> to logout $11111$, then login into the student system with $33333$.
+
+Click the button <u>Notification Center</u> at the top of the page to view the notification center.
+
+<img src=".\dailyReminder.png" style="zoom:50%;" />
+
+To view the content of the daily reminder, the student can click the button <u>Open</u>.
+
+<img src=".\dailyReminder2.png" style="zoom:50%;" />
+
+## Thanks for reading!
 
