@@ -2,7 +2,7 @@
 
 The link to Home page of the system is: http://localhost:8080/landing
 
-<img src="Demonstration Document\landing page.png" style="zoom:50%;" />
+<img src="DemonstrationDocument\landing page.png" style="zoom:50%;" />
 
 - Student System
 
