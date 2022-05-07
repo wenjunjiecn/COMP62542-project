@@ -1,4 +1,4 @@
-package com.uom.cs.studentsystem.studentadmissionoffice;
+package com.uom.cs.studentsystem.service.studentadmissionoffice;
 
 import com.uom.cs.studentsystem.model.MessageRecordEntity;
 import com.uom.cs.studentsystem.model.StudentEntity;
