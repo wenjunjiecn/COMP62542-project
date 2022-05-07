@@ -1,5 +1,7 @@
 ## Start the whole system
 
+\[Update: We have deployed our system on a cloud server. The url for the cloud server is https://studentsystem.tech/landing.\] 
+
 To start the whole system, you need to run the Java file named "*StudentSystemApplication.java*", located at "./src/main/java/com/uom/cs/studentsystem".
 
 The link to Home page of the system is: http://localhost:8080/landing
