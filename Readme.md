@@ -1,5 +1,7 @@
 ## Start the whole system
 
+To start the whole system, you need to run the Java file named "*StudentSystemApplication.java*", located at "./src/main/java/com/uom/cs/studentsystem".
+
 The link to Home page of the system is: http://localhost:8080/landing
 
 <img src="images/landing page.png" style="zoom:50%;" />
