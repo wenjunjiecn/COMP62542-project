@@ -1,6 +1,7 @@
 package com.uom.cs.studentsystem.service.status;
 
 import com.uom.cs.studentsystem.model.StudentEntity;
+import com.uom.cs.studentsystem.service.studentunion.Subject;
 import org.hibernate.annotations.Comment;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ import java.io.Serializable;
  */
 @Component
 @Scope("prototype")
-public class Student implements Serializable {
+public class Student implements Serializable, StudentBehavior {
     private static final long serialVersionUID = 6687929992161255473L;
     private String id;
     private String name;
@@ -65,5 +66,15 @@ public class Student implements Serializable {
         return registerStatus.hasInboxPermission();
     }
 
+    public void setSubject(Subject sub) {
 
+    }
+
+    public void subscribeNewsletter(String type) {
+
+    }
+
+    public void unsubscribeNewsletter(String type) {
+
+    }
 }

@@ -2,20 +2,21 @@ package com.uom.cs.studentsystem.service.studentunion;
 
 
 import com.uom.cs.studentsystem.service.status.Student;
+import com.uom.cs.studentsystem.service.status.StudentDecorator;
 
 import java.io.Serializable;
 
-public class ObserverOfStudentUnion implements Observer, Serializable {
+public class ObserverOfStudentUnion extends StudentDecorator implements Observer, Serializable {
 
-
-    private Student student;
-    private String id;
+    //private Student student;
+    //private String id;
     private Subject topic;
     //private List<Subject> topics; 不对，topic只有一个，剩下的在studentUnion里添加就可
 
     public ObserverOfStudentUnion(Student student) {
-        this.student=student;
-        this.id = student.getId();
+        super(student);
+        //this.student=student;
+        //this.id = student.getId();
         this.topic = StudentUnion.getInstance();
     }
 
@@ -25,9 +26,9 @@ public class ObserverOfStudentUnion implements Observer, Serializable {
         String msg = (String) topic.getUpdate(this);
         //这里应该接收一个列表的msg
         if(msg == null){
-            System.out.println(id +":: No new newsletter");
+            System.out.println(this.studentId() +":: No new newsletter");
         }else
-            System.out.println(id +":: Consuming newsletter::"+msg);
+            System.out.println(this.studentId() +":: Consuming newsletter::"+msg);
     }
 
     @Override
@@ -53,6 +54,6 @@ public class ObserverOfStudentUnion implements Observer, Serializable {
 
     @Override
     public String studentId() {
-        return this.id;
+        return this.student.getId();
     }
 }
