@@ -15,9 +15,9 @@ The link to Home page of the system is: http://localhost:8080/landing
 
 - Student Support Office
 
-  - Student Union is implemented for task 6.
+  - Student Support Office is implemented for task 6.
 
-  - In Student Union, we will allow the **Student Support Sffice to add or remove some courses** from student's course list.
+  - In Student Support Office, we will allow the **Student Support Sffice to add or remove some courses** from student's course list.
 
     <img src="images/StudentSupport.png" style="zoom:50%;" />
 
