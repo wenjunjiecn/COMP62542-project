@@ -2,7 +2,7 @@
 
 Update: We have deployed our system on a cloud server. 
 			   The url for the cloud server is ~~https://studentsystem.tech/landing~~
-			   (The website is currently inaccessible because the free server has expired)
+			   (The website is currently inaccessible because the free server has expired.)
 
 To start the whole system, you need to run the Java file named "*StudentSystemApplication.java*", located at "./src/main/java/com/uom/cs/studentsystem".
 
